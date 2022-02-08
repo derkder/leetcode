@@ -32,7 +32,7 @@ mapStudent[123] = "student_first";
 mapStudent[456] = "student_second";
 
 // find 返回迭代器指向当前查找元素的位置否则返回map::end()位置
-iter = mapStudent.find("123");
+aoto iter = mapStudent.find("123");
  
 if(iter != mapStudent.end())
        cout<<"Find, the value is"<<iter->second<<endl;
@@ -51,3 +51,7 @@ mapStudent.erase(mapStudent.begin(), mapStudent.end());
 //等同于mapStudent.clear()
 
 int nSize = mapStudent.size();
+
+
+
+
