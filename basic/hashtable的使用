@@ -1,0 +1,18 @@
+原型：leetcode1两数之和
+给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target  的那 两个 整数，并返回它们的数组下标。
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int, int> hashtable;
+        for (int i = 0; i < nums.size(); ++i) {
+            auto it = hashtable.find(target - nums[i]);//居然是每个循环赋值一个新的
+            if (it != hashtable.end()) {
+                return {it->second, i};//返回两个东西的方法，注意第一个参数的返回那里是否没有原括号的
+                //->second引到value，即下标
+            }
+            hashtable[nums[i]] = i;
+        }
+        return {};
+    }
+};
+//因为是用值找的，所以值是索引，key是值，value是下标
