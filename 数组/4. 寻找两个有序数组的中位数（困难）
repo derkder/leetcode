@@ -1,0 +1,6 @@
+给定两个大小分别为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。请你找出并返回这两个正序数组的 中位数 。
+算法的时间复杂度应该为 O(log (m+n)) 。
+
+https://leetcode-cn.com/problems/median-of-two-sorted-arrays/solution/xun-zhao-liang-ge-you-xu-shu-zu-de-zhong-wei-s-114/
+//基础：二分查找法；
+//进阶慢慢排除约1/4小于所有数的数（假设为n个），问题转换为寻找第（k-n）小的数，循环直到问题转换为找最小的数
