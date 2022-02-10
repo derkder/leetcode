@@ -1,0 +1,3 @@
+res.push_back(vector<int>());
+res.back().push_back(root->val);
+return res;
