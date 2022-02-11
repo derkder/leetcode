@@ -16,3 +16,6 @@ public:
     }
 };
 //因为是用值找的，所以值是索引，key是值，value是下标
+
+
+char用单引号，string用双引号
