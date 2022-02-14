@@ -1,0 +1,30 @@
+给定一个字符串S，通过将字符串S中的每个字母转变大小写，我们可以获得一个新的字符串。返回所有可能得到的字符串集合。
+思路：用回溯法，从位置0开始，如果不是字符，就直接添加到字符串temp后，临时保存，继续向下深度搜索，如果是字符，就分别进行按大小写字母回溯，当temp达到S的长度时，就保存结果，返回到上层，继续回溯。
+
+示例：
+输入：S = "a1b2"
+输出：["a1b2", "a1B2", "A1b2", "A1B2"]
+
+class Solution {
+public:
+    vector<string> res;
+    // 思路：暴搜，大小写字符取两种情况即可；数字直接添加
+    vector<string> letterCasePermutation(string s) {
+        int n=s.size();
+        backtrack(s,"",0,n);
+        return res;
+    }
+
+    void backtrack(string s,string path,int i,int n){
+        if(i==n){res.push_back(path);return;}   
+        // 数字直接添加
+        if(s[i]>='0'&&s[i]<='9')backtrack(s,path+s[i],i+1,n);
+        else{
+            // 字母就原字母和转换之后的字母两种情况，然后进行下一层的枚举
+            backtrack(s,path+s[i],i+1,n);
+            backtrack(s,path+char(s[i]^32),i+1,n);
+        }
+    }
+};
+
+感觉jjiu是个递归
