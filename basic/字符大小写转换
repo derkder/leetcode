@@ -10,3 +10,4 @@ char(s[i]^32)
 但是它仅适用于ASCII，不适用于Unicode，仅适用于字母。要编写可移植的C，您不应该假定字符编码为ASCII，因此请不要使用此类代码。
 
 
+https://www.codenong.com/40641468/
