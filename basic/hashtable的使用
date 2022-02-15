@@ -1,3 +1,25 @@
+正常的例子：（和正常的set差不多，都不像哈希表了）
+一个非常直观的思路是：我们遍历链表中的每个节点，并将它记录下来；一旦遇到了此前遍历过的节点，就可以判定链表中存在环。借助哈希表可以很方便地实现。
+原型：剑指 Offer II 022. 链表中环的入口节点
+class Solution {
+public:
+    ListNode *detectCycle(ListNode *head) {
+        unordered_set<ListNode *> visited;
+        while (head != nullptr) {
+            if (visited.count(head)) {//count() 用来查找set中某个某个键值出现的次数。
+                return head;
+            }
+            visited.insert(head);
+            head = head->next;
+        }
+        return nullptr;
+    }
+};
+
+
+
+
+非常特殊的例子
 原型：leetcode1两数之和
 给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target  的那 两个 整数，并返回它们的数组下标。
 class Solution {
