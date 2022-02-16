@@ -1,3 +1,5 @@
+底层是红黑树
+
 第一种定义：
 typedef map<int,CString> UDT_MAP_INT_CSTRING;
 UDT_MAP_INT_CSTRING enumMap;
