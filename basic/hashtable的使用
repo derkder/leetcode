@@ -3,6 +3,38 @@
 地址index=H（key）
 说白了，hash函数就是根据key计算出应该存储地址的位置，而哈希表是基于哈希函数建立的一种查找表
 
+一个非常简洁的hashtable使用：
+题目：
+剑指 Offer II 032. 有效的变位词
+给定两个字符串 s 和 t ，编写一个函数来判断它们是不是一组变位词（字母异位词）。
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        unordered_map<char, int> map;
+        for(int i = 0; i < max(s.size(), t.size()); i ++) 
+            map[s[i]] ++, map[t[i]] --;//可以用字符作为map的key值改动map
+        for(auto it : map) //遍历map 的方式
+            if(it.second != 0) return false;
+        return true;
+    }
+};
+
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        if(s.size() != t.size()) return false;
+        unordered_map<char, int> map;
+        for(char c : s) map[c] ++;
+        for(char c : t) 
+            if(-- map[c] == -1) return false;
+        return true;
+    }
+};
+
+
+
+
+
 正常的例子：（和正常的set差不多，都不像哈希表了）
 一个非常直观的思路是：我们遍历链表中的每个节点，并将它记录下来；一旦遇到了此前遍历过的节点，就可以判定链表中存在环。借助哈希表可以很方便地实现。
 原型：剑指 Offer II 022. 链表中环的入口节点
