@@ -1,5 +1,7 @@
 剑指 Offer II 033. 变位词组
 
+排序完之后是个vector
+unordered_map<string, vector<string>> mp;
 for (string& str: strs) {
             string key = str;
             sort(key.begin(), key.end());
