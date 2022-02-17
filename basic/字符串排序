@@ -1,6 +1,6 @@
 剑指 Offer II 033. 变位词组
 
-排序完之后是个vector
+排序完之后还是个str
 unordered_map<string, vector<string>> mp;
 for (string& str: strs) {
             string key = str;
