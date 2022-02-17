@@ -27,6 +27,7 @@ public:
 非常特殊的例子
 原型：leetcode1两数之和
 给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target  的那 两个 整数，并返回它们的数组下标。
+因为map是由红黑树实现的，所以查找起来很快
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
