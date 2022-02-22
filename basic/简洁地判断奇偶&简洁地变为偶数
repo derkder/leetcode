@@ -1,0 +1,23 @@
+简洁地判断奇偶：
+instead of:
+bool isOdd(int num){
+        if(num%2==1) return true;
+        return false;
+    }
+    
+    
+    
+we should:
+ if (nums[mid] == nums[mid ^ 1]) 
+
+
+
+简洁地变为偶数：
+考虑 \textit{mid}mid 和 11 按位与运算的结果，其中 \&& 是按位与运算符：
+
+当 \textit{mid}mid 是偶数时，\textit{mid}~\&~1 = 0mid & 1=0；
+
+当 \textit{mid}mid 是奇数时，\textit{mid}~\&~1 = 1mid & 1=1。
+
+因此在得到 \textit{mid}mid 的值之后，将 \textit{mid}mid 的值减去 \textit{mid}~\&~1mid & 1，即可确保 \textit{mid}mid 是偶数，如果原来的 \textit{mid}mid 是偶数则值不变，如果原来的 \textit{mid}mid 是奇数则值减 11。
+
