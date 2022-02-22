@@ -1,0 +1,10 @@
+instead of:
+bool isOdd(int num){
+        if(num%2==1) return true;
+        return false;
+    }
+    
+    
+    
+we should:
+ if (nums[mid] == nums[mid ^ 1]) 
