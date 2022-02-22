@@ -1,0 +1,42 @@
+重点，就本问题转换为哈希表问题：key是字母，value是位置下标
+
+class Solution {
+private:
+    unordered_map<char, int> ump;
+    //比较 str1 是否小于 str2
+    bool isIncreaseSep(string& str1, string& str2){
+        int size1 = str1.size(), size2 = str2.size();
+        int i = 0;
+        while(i < size1 && i < size2){
+            if(ump[str1[i]] < ump[str2[i]]){
+                return true;
+            }
+            else if(ump[str1[i]] > ump[str2[i]]){
+                return false;
+            }
+            ++i;
+        }
+        //到目前为止所有字符都相等，str1的长度小于或等于str2的长度就满足
+        return size1 <= size2;
+    }
+public:
+    bool isAlienSorted(vector<string>& words, string order) {
+        int index = 0, size = words.size();
+        for(char& c : order){
+            ump[c] = index++;
+        }
+        for(int i = 0; i < size - 1; ++i){
+            for(int j = i + 1; j < size; ++j){
+                if(!isIncreaseSep(words[i], words[j])){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+};
+
+作者：wang-xiang-zheng-nan-hai
+链接：https://leetcode-cn.com/problems/lwyVBB/solution/c-ha-xi-biao-by-wang-xiang-zheng-nan-hai-n0lz/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
