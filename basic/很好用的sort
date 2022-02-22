@@ -15,6 +15,9 @@ for (string& str: strs) {
         }
 
 
+sort甚至可以给vector<vector<int>>排序，会按照小vector的第一个值来排序
+
+
 
 它使用的排序方法是类似于快排的方法，时间复杂度为n*log2(n)
 Sort函数有三个参数：
