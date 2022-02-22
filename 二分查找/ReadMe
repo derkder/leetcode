@@ -2,3 +2,4 @@
 while里面是left=mid+1；right=mid-1;（这个不一定的）
 
 通常当题目要求时间复杂度为O(logn),空间复杂度为O(1)
+https://yuguang.blog.csdn.net/article/details/111935019
