@@ -1,2 +1,7 @@
 atoi:把字符串转换成整型数。
 atof():把字符串转换成浮点数。
+注意不能直接写字符串：
+！！！！：
+正确demo：
+string& token = tokens[i];
+stk.push(atoi(token.c_str()));
