@@ -8,7 +8,13 @@ pair<string, string> author("James","Joy");    // 创建一个author对象，两
 pair<string, int> name_age("Tom", 18);
 pair<string, int> name_age2(name_age);    // 拷贝构造初始化
 
-make_pair(v1, v2);          // 以v1和v2的值创建一个新的pair对象，其元素类型分别是v1和v2的类型。
 
+赋值
+make_pair(v1, v2);          // 以v1和v2的值创建一个新的pair对象，其元素类型分别是v1和v2的类型。
+e.g.
+pair<int, double> p1;
+ p1 = make_pair(1, 1.2);
+ 
+访问：
 p1.first;                   // 返回对象p1中名为first的公有数据成员
 p1.second;                 // 返回对象p1中名为second的公有数据成员
