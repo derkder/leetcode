@@ -3,6 +3,10 @@ https://blog.csdn.net/sevenjoin/article/details/81937695
 定义，构造函数：
 pair<T1, T2> p1;            //创建一个空的pair对象（使用默认构造），它的两个元素分别是T1和T2类型，采用值初始化。
 pair<T1, T2> p1(v1, v2);    //创建一个pair对象，它的两个元素分别是T1和T2类型，其中first成员初始化为v1，second成员初始化为v2。
+e.g.
+pair<string, string> author("James","Joy");    // 创建一个author对象，两个元素类型分别为string类型，并默认初始值为James和Joy。
+pair<string, int> name_age("Tom", 18);
+pair<string, int> name_age2(name_age);    // 拷贝构造初始化
 
 make_pair(v1, v2);          // 以v1和v2的值创建一个新的pair对象，其元素类型分别是v1和v2的类型。
 
