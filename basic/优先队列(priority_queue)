@@ -1,5 +1,8 @@
 把元素放进去，元素就自动排队了，而且还没有重复的
-priority_queue<int, vector<int>, greater<int>> q;
+//升序队列
+priority_queue <int,vector<int>,greater<int> > q;
+//降序队列
+priority_queue <int,vector<int>,less<int> >q;
 
 703.数据流中的第 K 大元素
 设计一个找到数据流中第 k 大元素的类（class）。注意是排序后的第 k 大元素，不是第 k 个不同的元素。
