@@ -1,0 +1,27 @@
+把元素放进去，元素就自动排队了，而且还没有重复的
+priority_queue<int, vector<int>, greater<int>> q;
+
+703.数据流中的第 K 大元素
+设计一个找到数据流中第 k 大元素的类（class）。注意是排序后的第 k 大元素，不是第 k 个不同的元素。
+class KthLargest {
+public:
+    priority_queue<int, vector<int>, greater<int>> q;
+    int k;
+    KthLargest(int k, vector<int>& nums) {
+        this->k = k;
+        for (auto& x: nums) {
+            add(x);
+        }
+    }
+    
+    int add(int val) {
+        q.push(val);
+        if (q.size() > k) {
+            q.pop();
+        }
+        return q.top();
+    }
+};
+
+其实这题核心是用堆，小根堆。
+还有个知识点就是数据流，所谓数据流，即是说我们写的算法需要支持 add() 函数；在力扣后台评测程序中会多次调用add()函数，每次调用都会向我们写的算法中添加一个元素。
