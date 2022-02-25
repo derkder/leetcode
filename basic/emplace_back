@@ -1,0 +1,23 @@
+emplace_back()是c++11的新特性。
+和push_back()的区别在于
+push_back()方法要调用构造函数和复制构造函数，这也就代表着要先构造一个临时对象，然后把临时的copy构造函数拷贝或者移动到容器最后面。
+而emplace_back()在实现时，则是直接在容器的尾部创建这个元素，省去了拷贝或移动元素的过程。
+
+vector<pair<int, int>> ret;
+ret.push_back(1,1)//会报错，因为没有构造一个临时对象
+ret.push_back(pair(1,1))//不会报错，因为构成了一个pair对象
+ret.emplace_back(1,1)//不会报错，因为直接在容器的尾部创建对象
+
+在leetoce上的一题，emplace_back的用法让我更加的理解，以下是从leetcode上截取的一段代码
+
+vector<vector<int>> ans;
+        int lastcol = INT_MIN;
+        for (const auto& [col, row, value]: nodes) {
+            if (col != lastcol) {
+                lastcol = col;
+                ans.emplace_back();//这里的emplace_back()直接在ans的尾部创建一个类型为vector<int>的空对象，如果省去这一行，后面的ans.back()会是一个空指针而报错。
+            }
+            ans.back().emplace_back(value);
+        }
+
+原文链接：https://blog.csdn.net/mmm123213/article/details/119282296
