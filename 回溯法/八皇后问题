@@ -21,12 +21,12 @@ void back_tracking(int row=0)    //算法函数，从第0行开始遍历
 {
     if (row==n)
         t ++;               //判断若遍历完成，就进行计数     
-        for (int col=0;col<n;col++)     //遍历棋盘每一列
-        //这个for就隐形地实现了如果遇到达不到目标的，就会回退一步
-        {
-            queen[row] = col;           //将皇后的位置记录在数组
-            if (is_ok(row))             //判断皇后的位置是否有冲突
-                back_tracking(row+1);   //递归，计算下一个皇后的位置
-        }
+    for (int col=0;col<n;col++)     //遍历棋盘每一列
+    //这个for就隐形地实现了如果遇到达不到目标的，就会回退一步
+    {
+        queen[row] = col;           //将皇后的位置记录在数组
+        if (is_ok(row))             //判断皇后的位置是否有冲突
+            back_tracking(row+1);   //递归，计算下一个皇后的位置
+    }
 }
 代码实现算法也是比较简单的，主要还是看是否掌握算法思想。
