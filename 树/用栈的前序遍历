@@ -1,0 +1,23 @@
+class Solution {
+public:
+    vector<int> preorderTraversal(TreeNode* root) {
+        return dfs(root);
+    }
+    vector<int> dfs(TreeNode* root){
+        stack<TreeNode *> s;
+        vector<int> ret;
+        while(!s.empty()||root!=nullptr){
+            while(root!=nullptr){//操作（输出、计算等）都在这个while里
+                s.push(root);
+                ret.push_back(root->val);
+                root=root->left;
+            }
+            if(!s.empty()){
+                root=s.top();
+                s.pop();
+                root=root->right;
+            }
+        }
+        return ret;
+    }
+};
