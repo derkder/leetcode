@@ -1,3 +1,24 @@
+书上看来的方法，先把右边的压入栈，这样到时候弹出（访问）的时候，会先弹出左边的元素，做到前序遍历
+vector<int> preorderTraversal(TreeNode* root) {
+    vector<int> ret;
+    if (!root) {
+        return ret;
+    }
+    stack<TreeNode*> s;
+    s.push(root);
+    while (!s.empty()) {
+        TreeNode* node = s.top();
+        s.pop();
+        ret.push_back(node->val);
+        if (node->right) s.push(node->right); // 先右后左，保证左子树先遍历
+        if (node->left) s.push(node->left);
+    }
+    return ret;
+}
+
+
+
+学校数据结构给的方法，但感觉就是代码简洁其实并不清晰
 class Solution {
 public:
     vector<int> preorderTraversal(TreeNode* root) {
