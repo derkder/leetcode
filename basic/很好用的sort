@@ -27,8 +27,9 @@ Sort函数有三个参数：
 
 
 Sortt函数的第三个参数可以用这样的语句告诉程序你所采用的排序原则
-less<数据类型>()//从小到大排序
-greater<数据类型>()//从大到小排序
+less<数据类型>()//从小到大排序!!!!!
+greater<数据类型>()//从大到小排序!!!!!!
+//感觉和堆反过来的，堆的greater最小的在上面，是小根堆
 #include<iostream>
 #include<algorithm>
 using namespace std;
@@ -42,3 +43,18 @@ using namespace std;
  cout<<a[i]<<endl;
  return 0;
 }
+#include<iostream>
+#include<algorithm>
+using namespace std;
+
+int main(){
+int num[10] = {6,5,9,1,2,8,7,3,4,0};
+sort(num,num+10,greater<int>());
+for(int i=0;i<10;i++){
+            cout<<num[i]<<" ";
+}//输出结果:9 8 7 6 5 4 3 2 1 0
+
+return 0;
+	
+} 
+
