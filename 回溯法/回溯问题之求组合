@@ -1,0 +1,52 @@
+17. 电话号码的字母组合
+给定一个仅包含数字 2-9 的字符串，返回所有它能表示的字母组合。答案可以按 任意顺序 返回。
+
+
+
+解题思路
+看到题目是找组合，第一反应就是回溯
+回溯经典的题型有全排列、求子集、求组合，很明显这就是求组合的问题
+求组合模板：
+void backtrack(vector<int>& nums, int start, vector<int>& track) {
+    // 到达树的底部
+    if (nums.size() == track.size()) {
+        res.push_back(track);
+        return;
+    }
+    // 注意 i 从 start 开始递增
+    for (int i = start; i <= n; i++) {
+        track.push_back(i);
+        backtrack(n, k, i + 1, track);
+        track.pop_back();
+    }
+}
+我们把它在同一层的遍历范围约束一下，按照数字-字符串的映射，每层遍历的范围应该是对应数字的字符串。
+下面是解题代码
+代码
+class Solution {
+    vector<string>ans;
+    string tmp;
+    const vector<string>dic={"abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+public:
+    vector<string> letterCombinations(string digits) {
+        int len=digits.size();
+        if(!len) return ans;
+        backtrack(digits,0);
+        return ans;
+    }
+    void backtrack(string &digits,int pos){
+        if(pos>=digits.size()){
+            ans.emplace_back(tmp);
+            return;
+        }
+        int num=digits[pos]-'2';
+        for(char c:dic[num]){
+            tmp+=c;
+            backtrack(digits,pos+1);
+            tmp.pop_back();
+        }
+    }
+};
+
+
+链接：https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/solution/dian-hua-hao-ma-de-zi-mu-zu-he-hui-su-we-p295/
