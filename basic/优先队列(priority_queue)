@@ -1,5 +1,5 @@
 把元素放进去，元素就自动排队了，而且还没有重复的
-//升序队列
+//升序队列（小顶堆）
 priority_queue <int,vector<int>,greater<int> > q;
 //降序队列
 priority_queue <int,vector<int>,less<int> >q;
