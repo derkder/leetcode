@@ -16,7 +16,7 @@ void backtrack(vector<int>& nums, int start, vector<int>& track) {
     // 注意 i 从 start 开始递增
     for (int i = start; i <= n; i++) {
         track.push_back(i);
-        backtrack(n, k, i + 1, track);
+        backtrack(n, i + 1, track);
         track.pop_back();
     }
 }
