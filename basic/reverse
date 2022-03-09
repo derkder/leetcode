@@ -1,0 +1,16 @@
+#include <iostream>
+#include <string>
+#include <algorithm>
+using namespace std;
+ 
+int main()
+{
+      string str1;
+      cin>>str1;
+      cout<<"原始字符串是："<<str1<<endl;
+      reverse(str1.begin(),str1.end());
+      cout<<"转换后的字符串是："<<str1<<endl;
+      return 0;
+}
+
+
