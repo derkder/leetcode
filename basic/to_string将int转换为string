@@ -1,0 +1,6 @@
+int reverse(int x) {
+        string s=to_string(x); 
+        cout<<s;
+        return revert(s);
+    }
+    
