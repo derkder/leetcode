@@ -5,3 +5,7 @@ atof():把字符串转换成浮点数。
 正确demo：
 string& token = tokens[i];
 stk.push(atoi(token.c_str()));
+
+
+
+貌似直接写stoi更好。int x=stoi(s);
