@@ -1,0 +1,27 @@
+deque<int> deq;
+
+
+
+3.2.2 deque的常用成员函数
+deque<int> deq;
+deq[ ]：用来访问双向队列中单个的元素。
+deq.front()：返回第一个元素的引用。
+deq.back()：返回最后一个元素的引用。
+deq.push_front(x)：把元素x插入到双向队列的头部。
+deq.pop_front()：弹出双向队列的第一个元素。
+deq.push_back(x)：把元素x插入到双向队列的尾部。
+deq.pop_back()：弹出双向队列的最后一个元素。
+
+
+
+3.2.3 deque的一些特点
+支持随机访问，即支持[ ]以及at()，但是性能没有vector好。
+可以在内部进行插入和删除操作，但性能不及list。
+deque两端都能够快速插入和删除元素，而vector只能在尾端进行。
+deque的元素存取和迭代器操作会稍微慢一些，因为deque的内部结构会多一个间接过程。
+deque迭代器是特殊的智能指针，而不是一般指针，它需要在不同的区块之间跳转。
+deque可以包含更多的元素，其max_size可能更大，因为不止使用一块内存。
+deque不支持对容量和内存分配时机的控制。
+在除了首尾两端的其他地方插入和删除元素，都将会导致指向deque元素的任何pointers、references、iterators失效。不过，deque的内存重分配优于vector，因为其内部结构显示不需要复制所有元素。
+deque的内存区块不再被使用时，会被释放，deque的内存大小是可缩减的。不过，是不是这么做以及怎么做由实际操作版本定义。
+deque不提供容量操作：capacity()和reverse()，但是vector可以。
