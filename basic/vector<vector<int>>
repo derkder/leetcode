@@ -8,3 +8,13 @@ return res;
 vector<vector<int>> dp(n, vector<int>(n));
 赋值：
 dp[i][j]
+
+
+
+
+
+
+
+vector的初始化
+两个-1
+vector<int> ans(2,-1);
