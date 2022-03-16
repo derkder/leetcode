@@ -1,5 +1,6 @@
 res.push_back(vector<int>());
 res.back().push_back(root->val);
+res.push_back({nums[first], nums[second], nums[third]});
 return res;
 
 
