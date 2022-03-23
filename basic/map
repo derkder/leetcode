@@ -43,3 +43,12 @@ unordered_map<char, string> phoneMap{
             {'8', "tuv"},
             {'9', "wxyz"}
         };
+
+
+//另一种迭代器使用方式
+unordered_set<string>::iterator iter1;
+    for(iter1 = set1.begin(); iter1 != set1.end(); iter1++)
+    {
+        cout << *iter1 << "\t";
+    }
+    cout << endl;
