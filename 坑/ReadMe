@@ -5,3 +5,4 @@
 一个个赋值要用字符串数组不要用字符串，然后s=arr这样赋值
 
 用word_set.erase(word);就heap溢出，先用vector<>装，最后再一起erase就没事儿，很奇妙
+可能说明在wordset中遍历的时候，不能删除wordset里的元素！！！！！！！
