@@ -1,0 +1,26 @@
+int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
+        unordered_set<string> word_set(wordList.begin(), wordList.end());///初始化！！！！，把vector放入set
+        if (word_set.count(endWord) == 0) return 0;
+        queue<string> q;
+        q.push(beginWord);
+        word_set.erase(beginWord);
+        int i = 1;
+        while (!q.empty()) {
+            int size = q.size();             
+            for (int j = 0; j < size; ++j) {    
+                auto str = q.front(); q.pop();
+                vector<string> tmp;             
+                for (const string& word : word_set) {
+                    if (exchange_word(str, word)) {
+                        if (word == endWord) return i + 1;
+                        tmp.push_back(word);
+                        q.push(word);
+                    }
+                }
+                for (const auto& str : tmp) word_set.erase(str);//删除
+            }
+            ++i;
+        }
+        return 0;
+    }
+};
