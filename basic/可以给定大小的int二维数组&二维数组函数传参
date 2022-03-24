@@ -1,12 +1,4 @@
-int[][] dp = new int[N + 1][W + 1];
-
-
-上面的不行，下面的貌似就可以了
-cin<<n;
-int dp[n][n];
-
-
-但在vs中上面的可不可以，要
+int *a=new int[5];
 int **dp=new int*[n];
     for(int i=0;i<n;++i)
     {
