@@ -1,4 +1,13 @@
 底层是红黑树
+!!!!!!!!
+// 第三种 用"array"方式插入
+mapStudent[123] = "student_first";
+mapStudent[456] = "student_second";
+
+
+
+
+
 
 第一种定义：
 typedef map<int,CString> UDT_MAP_INT_CSTRING;
