@@ -58,3 +58,48 @@ return 0;
 	
 } 
 
+
+
+
+
+自定义sort排序
+https://blog.csdn.net/weixin_44713619/article/details/108718416
+static bool compare(vector<int>&a,vector<int>&b)
+{
+    return a[1]<b[1];		//a[num]<b[num],num代表指定列
+    						// < 代表升序排列
+}
+sort(intervals.begin(),intervals.end(),compare);//intervals为二维vector容器
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+static bool compare(vector<int> &a, vector<int> &b) {
+    return a[1] < b[1];
+}
+
+int main() {
+    vector<vector<int>> intervals = {{1, 2},
+                                     {2, 1},
+                                     {1, 6},
+                                     {1, 3}};
+    cout << "排序前：" << endl;
+    for (const auto &item:intervals) {
+        for (auto item1:item) {
+            cout << item1 << "\t";
+        }
+        cout << endl;
+    }
+    sort(intervals.begin(), intervals.end(), compare);
+    cout << "排序后：" << endl;
+    for (const auto &item:intervals) {
+        for (auto item1:item) {
+            cout << item1 << "\t";
+        }
+        cout << endl;
+    }
+}
+
+
