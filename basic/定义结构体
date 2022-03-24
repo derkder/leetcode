@@ -1,0 +1,9 @@
+struct node {
+    int w, h;
+};
+  
+  vector<node> res(n);
+  
+  for (int i = 0; i < n; ++i) {
+        scanf("%d%d", &res[i].w, &res[i].h);
+    }
