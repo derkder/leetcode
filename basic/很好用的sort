@@ -61,7 +61,7 @@ return 0;
 
 
 
-
+本来二维数组根据第一维来整体排序，若想改成第二维
 自定义sort排序
 https://blog.csdn.net/weixin_44713619/article/details/108718416
 static bool compare(vector<int>&a,vector<int>&b)
