@@ -6,6 +6,14 @@ cin<<n;
 int dp[n][n];
 
 
+但在vs中上面的可不可以，要
+int **dp=new int*[n];
+    for(int i=0;i<n;++i)
+    {
+        dp[i]=new int[2];
+    }
+
+
 二维数组传参
 https://blog.csdn.net/ytzlln/article/details/78220226
 void Func(int array[3][10]); 
