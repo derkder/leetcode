@@ -1,3 +1,8 @@
+艹或者int a[110][110];写在using namespace std;下面int main上面就行了
+
+
+
+
 int *a=new int[5];
 int **dp=new int*[n];
     for(int i=0;i<n;++i)
