@@ -1,5 +1,5 @@
 lc1215
-
+//一般dfs不用visited置0，回溯需要
 
 #include<bits/stdc++.h>
 using namespace std;
