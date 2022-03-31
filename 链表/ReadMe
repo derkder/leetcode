@@ -1,4 +1,4 @@
-感觉好多巧妙的解都用的反转链表
+感觉好多巧妙的解都用的反转链表，三个指针，其中next在每次cur！=null的循环中赋值
 class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
