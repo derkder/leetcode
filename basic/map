@@ -9,7 +9,10 @@ for (auto it = mp.begin(); it != mp.end(); ++it) {
             ans.emplace_back(it->second);
         }
 
-
+（
+set的遍历*it
+for(auto it=ret.begin();it!=ret.end();it++) res.emplace_back(*it);
+）
 
 
 
