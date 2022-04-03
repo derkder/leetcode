@@ -1,0 +1,42 @@
+主要构成：
+并查集主要由一个整型数组parent[ ]和两个函数find( )、union( )构成。
+数组 parent[ ] 记录了每个点的前驱节点是谁，函数 find(x) 用于查找指定节点 x 属于哪个集合，函数 union(x,y) 用于合并两个节点 x 和 y 。
+
+
+
+547. 省份数量
+class Solution {
+public:
+    int Find(vector<int>& parent, int index) {
+        if (parent[index] != index) {
+            parent[index] = Find(parent, parent[index]);
+        }
+        return parent[index];
+    }
+
+    void Union(vector<int>& parent, int index1, int index2) {
+        parent[Find(parent, index1)] = Find(parent, index2);
+    }
+
+    int findCircleNum(vector<vector<int>>& isConnected) {
+        int provinces = isConnected.size();
+        vector<int> parent(provinces);
+        for (int i = 0; i < provinces; i++) {
+            parent[i] = i;
+        }
+        for (int i = 0; i < provinces; i++) {
+            for (int j = i + 1; j < provinces; j++) {
+                if (isConnected[i][j] == 1) {
+                    Union(parent, i, j);
+                }
+            }
+        }
+        int circles = 0;
+        for (int i = 0; i < provinces; i++) {
+            if (parent[i] == i) {
+                circles++;
+            }
+        }
+        return circles;
+    }
+};
