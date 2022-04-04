@@ -1,0 +1,3 @@
+string& assign(const string &s, int start, int n);//将s从start开始n个字符赋值给字符串
+string& append(const string &s, int start, int n);//把字符串s中从start开始的n个字符连接到当前字符串结尾
+string str = "it"; const char* cstr = str.c_str();//string 转 char*
