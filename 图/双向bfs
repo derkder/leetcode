@@ -1,0 +1,81 @@
+「双向 BFS」的基本实现思路如下：
+1、创建「两个队列」分别用于两个方向的搜索；
+2、创建「两个哈希表」用于「解决相同节点重复搜索」和「！！记录转换次数！！！」；
+3、为了尽可能让两个搜索方向“平均”，每次从队列中取值进行扩展时，先判断哪个队列容量较少；
+4、如果在搜索过程中「搜索到对方搜索过的节点」，说明找到了最短路径。
+
+
+
+//！！！！
+d1、d2 为两个方向的队列
+m1、m2 为两个方向的哈希表，记录每个节点距离起点的
+// 只有两个队列都不空，才有必要继续往下搜索
+// 如果其中一个队列空了，说明从某个方向搜到底都搜不到该方向的目标节点
+while(!d1.isEmpty() && !d2.isEmpty()) {
+    if (d1.size() < d2.size()) {
+        update(d1, m1, m2);
+    } else {
+        update(d2, m2, m1);
+    }
+}
+// update 为将当前队列 d 中包含的元素取出，进行「一次完整扩展」的逻辑（按层拓展）
+void update(Deque d, Map cur, Map other) {}
+总结，新建两个队列、两个哈希表、一个在main函数调用一次得dfs函数、dfs函数里装update函数（update函数用来全取队列并全填入新得）
+
+
+752打开转盘锁
+class Solution {
+public:
+    string s,t; 
+    unordered_set<string> st;
+    int openLock(vector<string>& deadends, string target) {
+        s = "0000";
+        t = target;
+        if(s == t) return 0;
+        for(const auto& d : deadends) st.insert(d);
+        if(st.count(s)) return -1;
+        int ans = bfs();
+        return ans;
+    }
+    int bfs(){
+        queue<string> d1,d2;
+        unordered_map<string,int> m1,m2;
+        d1.push(s); m1[s] = 0;
+        d2.push(t); m2[t] = 0;
+        while(d1.size() and d2.size()){
+            int t = -1;
+            if(d1.size() <= d2.size()){
+                t = update(d1,m1,m2);
+            }
+            else{
+                t = update(d2,m2,m1);
+            }
+            if(t != -1) return t;
+        }
+        return -1;
+    }
+    int update(queue<string>& q,unordered_map<string,int>& cur,unordered_map<string,int>& other){
+        int m = q.size();
+        while (m-- > 0) {
+            string t = q.front(); q.pop();
+            int step = cur[t];
+            for(int i = 0; i < 4; i++){
+                for(int j = -1; j <= 1; j++){
+                    if(j == 0) continue;
+                    int origin = t[i] - '0';
+                    int next = (origin + j) % 10;
+                    if(next == -1) next = 9;
+                    string copy = t;
+                    copy[i] = '0' + next;
+                    if(st.count(copy) or cur.count(copy)) continue;
+                    if(other.count(copy)) return step + 1 + other[copy];
+                    else{
+                        q.push(copy);
+                        cur[copy] = step + 1;
+                    }
+                }
+            }
+        }
+        return -1;
+    }
+};
