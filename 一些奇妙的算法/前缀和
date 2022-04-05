@@ -1,0 +1,41 @@
+输入一个长度为n的整数序列。
+接下来再输入m个询问，每个询问输入一对l, r。
+对于每个询问，输出原序列中从第l个数到第r个数的和（也就是说查询固定长度的一段数的属性）
+
+
+2100. 适合打劫银行的日子
+你和一群强盗准备打劫银行。给你一个下标从 0 开始的整数数组 security ，其中 security[i] 是第 i 天执勤警卫的数量。日子从 0 开始编号。同时给你一个整数 time 。
+如果第 i 天满足以下所有条件，我们称它为一个适合打劫银行的日子：
+第 i 天前和后都分别至少有 time 天。
+第 i 天前连续 time 天警卫数目都是非递增的。
+第 i 天后连续 time 天警卫数目都是非递减的。
+
+class Solution {
+public:
+    vector<int> goodDaysToRobBank(vector<int>& security, int time) {
+        int n=security.size();
+        vector<int> res;
+        vector<int> left(n,0);
+        if(n>=2){
+            if(security[0]>=security[1]) left[1]++;
+        }
+        for(int i=2;i<=n-2;i++){
+            if(security[i]<=security[i-1]) left[i]=left[i-1]+1;
+        }
+        vector<int> right(n,0);
+        if(n>=2){
+            if(security[n-1]>=security[n-2]) right[n-2]++;
+        }
+        for(int i=n-3;i>=1;i--){
+            if(security[i]<=security[i+1]) right[i]=right[i+1]+1;
+        }
+        for(int i=0;i<n;i++){
+            //printf("i=%d,left[i]=%d,right[i]=%d\n",i,left[i],right[i]);
+            if(left[i]>=time&&right[i]>=time) res.push_back(i);
+        }
+        return res;
+    }
+};
+//官方解法，用dp维护一个left数组一个right数组来记录每个位置左边的不递增的大小（这里的dp是前缀和的一种体现）
+//所以dp不一定do最后的结果
+//连续非递增等价于连续递减或相等，可以用dp推，别想太复杂，别想那种先连续递增有连续递减，这种已经不算了
