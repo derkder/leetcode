@@ -3,7 +3,10 @@
 
 
 白背了呜呜
-int *a=new int[5];
+int *left=new int[n];
+memset(left,0,sizeof(int)*n);
+
+
 int **dp=new int*[n];
     for(int i=0;i<n;++i)
     {
