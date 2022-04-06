@@ -54,13 +54,11 @@ void dfs(vector<string> &grid, vector<vector<Node>> &pos) {//回溯，就是123�
     // cout << x << " " << y << endl;
     // cout << endl;
     if(x != -1) {//还有*没填
-        grid[x][y] = '1';
-        dfs(grid, pos);
-        grid[x][y] = '2';
-        dfs(grid, pos);
-        grid[x][y] = '3';
-        dfs(grid, pos);
-        grid[x][y] = '*';
+        for(char i='1';i<='3';i++){
+        grid[x][y] = 'i';//修改当前节点状态
+        dfs(grid, pos);//递归子节点
+        }
+        grid[x][y] = '*';//回改当前节点状态
     } else {
         if(check(grid, pos)) {//填完了就检查是否满足要求
             ans.insert(grid);
