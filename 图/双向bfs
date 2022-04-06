@@ -20,7 +20,7 @@ while(!d1.isEmpty() && !d2.isEmpty()) {
 }
 // update 为将当前队列 d 中包含的元素取出，进行「一次完整扩展」的逻辑（按层拓展）
 void update(Deque d, Map cur, Map other) {}
-总结，新建两个队列、两个哈希表、一个在main函数调用一次得bfs函数、bfs函数里装update函数（update函数用来全取队列并全填入新得,传入的参数为一个队列两个哈希）
+总结，新建两个队列、两个哈希表（这四个哥哥都在bfs里建的）、一个在main函数调用一次得bfs函数、bfs函数里装update函数（update函数用来全取队列并全填入新得,传入的参数为一个队列两个哈希）
 
 
 752打开转盘锁
