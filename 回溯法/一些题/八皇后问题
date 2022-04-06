@@ -7,26 +7,31 @@
 代码实现八皇后问题
 我们将算法也设置成两步，
 第一步 我们要判断每次输入的皇后是否在同一行同一列，或者同一斜线上。
-bool is_ok(int row){            //判断设置的皇后是否在同一行，同一列，或者同一斜线上
-    for (int j=0;j<row;j++)
-    {
-        if (queen[row]==queen[j]||row-queen[row]==j-queen[j]||row+queen[row]==j+queen[j])
-            return false;       
-    }
-    return true;
+vector<vector<string>> solveNQueens(int n) { 
+    vector<vector<string>> ans; 
+    if (n == 0) return ans；
+    vector<string> board(n, string(n, ’.’)); 
+    vector<bool> column(n, false), ldiag(2*n-1, false), rdiag(2*n-1, false); 
+    backtracking(ans, board, column, ldiag, rdiag, 0, n); 
+    return ans;
 }
-
-第二步 我们用十行代码来进入我们核心算法
-void back_tracking(int row=0)    //算法函数，从第0行开始遍历
-{
-    if (row==n)
-        t ++;               //判断若遍历完成，就进行计数     
-    for (int col=0;col<n;col++)     //遍历棋盘每一列
-    //这个for就隐形地实现了如果遇到达不到目标的，就会回退一步
-    {
-        queen[row] = col;           //将皇后的位置记录在数组
-        if (is_ok(row))             //判断皇后的位置是否有冲突
-            back_tracking(row+1);   //递归，计算下一个皇后的位置
+// 辅函数 
+void backtracking(vector<vector<string>> &ans, vector<string> &board, vector< bool> &column, vector<bool> &ldiag, vector<bool> &rdiag, int row, int n){ 
+    if (row == n) {
+    ans.push_back(board); 
+    return;
+    }
+    for (int i = 0; i < n; ++i) { 
+        if (column[i] || ldiag[n-row+i-1] || rdiag[row+i+1]) { 
+            continue;
+        }
+        // 修改当前节点状态 
+        board[row][i] = ’Q’; 
+        column[i] = ldiag[n-row+i-1] = rdiag[row+i+1] = true; 
+        // 递归子节点 
+        backtracking(ans, board, column, ldiag, rdiag, row+1, n); 
+        // 回改当前节点状态 
+        board[row][i] = ’.’; 
+        column[i] = ldiag[n-row+i-1] = rdiag[row+i+1] = false;
     }
 }
-代码实现算法也是比较简单的，主要还是看是否掌握算法思想。
