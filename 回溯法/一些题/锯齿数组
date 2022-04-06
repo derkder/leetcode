@@ -1,0 +1,98 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+struct Node {
+    int x, y;
+};
+
+// int ans;
+vector<string> ans_grid;
+set<vector<string>>ans;//记录所有解法，set用来去重
+
+bool check(vector<string> &grid, vector<vector<Node>> &pos) {   //普普通通一个检查
+    //判断每个锯齿是否满足数独要求
+    for(int i = 0; i < 3; i++) {
+        vector<int>count(3);
+        for(int j = 0; j < 3; j++) {
+            if(isdigit(grid[pos[i][j].x][pos[i][j].y])) count[grid[pos[i][j].x][pos[i][j].y] - '1']++;
+        }
+        if(count[0] != 1 || count[1] != 1 || count[2] != 1) return false;
+    }
+    //判断每行是否满足数独要求
+    for(int i = 0; i < 3; i++) {
+        vector<int>count(3);
+        for(int j = 0; j < 3; j++) {
+            if(isdigit(grid[i][j])) count[grid[i][j] - '1']++;
+        }
+        if(count[0] != 1 || count[1] != 1 || count[2] != 1) return false;
+    }
+    //判断每列是否满足数独要求
+    for(int i = 0; i < 3; i++) {
+        vector<int>count(3);
+        for(int j = 0; j < 3; j++) {
+            if(isdigit(grid[j][i])) count[grid[j][i] - '1']++;
+        }
+        if(count[0] != 1 || count[1] != 1 || count[2] != 1) return false;
+    }
+    // for(auto &i: grid) cout << i << endl;
+    //     cout << endl;
+    return true;
+}
+
+void dfs(vector<string> &grid, vector<vector<Node>> &pos) {//回溯，就是123挨个尝试
+    int x = -1, y = -1;
+    //寻找下一个*，找不到x就等于-1
+    for(int i = 0; i < 3; i++) {
+        for(int j = 0; j < 3; j++) {
+            if(grid[i][j] == '*') {
+                x = i, y = j;
+                break;
+            }
+        }
+        if(x != -1) break;
+    }
+    // cout << x << " " << y << endl;
+    // cout << endl;
+    if(x != -1) {//还有*没填
+        grid[x][y] = '1';
+        dfs(grid, pos);
+        grid[x][y] = '2';
+        dfs(grid, pos);
+        grid[x][y] = '3';
+        dfs(grid, pos);
+        grid[x][y] = '*';
+    } else {
+        if(check(grid, pos)) {//填完了就检查是否满足要求
+            ans.insert(grid);
+            ans_grid = grid;
+        }
+    }
+}
+
+int main() {
+    int T;
+    cin >> T;
+    while(T--) {
+        vector<string>grid(3);
+        for(int i = 0; i < 3; i++) cin >> grid[i];
+        vector<vector<Node>>pos(3, vector<Node>(3));//记录三个锯齿
+        for(int i = 0; i < 3; i++) {
+            for(int j = 0; j < 3; j++) {
+                cin >> pos[i][j].x >> pos[i][j].y;
+            }
+        }
+        // ans = 0;
+        ans.clear();
+        dfs(grid, pos, 0, 0);
+        if(ans.size() == 1) {
+            cout << "Unique" << endl;
+            for(int i = 0; i < 3; i++) cout << ans_grid[i] << endl;
+        } else if(ans.size() == 0) {
+            cout << "No" << endl;
+        } else {
+            cout << "Multiple" << endl;
+        }
+    }
+    return 0;
+}
+
