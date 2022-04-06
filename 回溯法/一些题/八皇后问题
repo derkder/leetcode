@@ -5,8 +5,7 @@
 
 
 代码实现八皇后问题
-我们将算法也设置成两步，
-第一步 我们要判断每次输入的皇后是否在同一行同一列，或者同一斜线上。
+//主函数
 vector<vector<string>> solveNQueens(int n) { 
     vector<vector<string>> ans; 
     if (n == 0) return ans；
