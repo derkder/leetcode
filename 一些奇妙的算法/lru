@@ -7,7 +7,7 @@ struct DoubleList{
     DoubleList(int k,int v):left(nullptr),right(nullptr),key(k),val(v){}
 };
 class LRUCache {
-    private:
+private:
     unordered_map<int,DoubleList*>mp;
     DoubleList *head;
     DoubleList *tail;
