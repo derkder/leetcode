@@ -39,3 +39,45 @@ public:
 //官方解法，用dp维护一个left数组一个right数组来记录每个位置左边的不递增的大小（这里的dp是前缀和的一种体现）
 //所以dp不一定do最后的结果
 //连续非递增等价于连续递减或相等，可以用dp推，别想太复杂，别想那种先连续递增有连续递减，这种已经不算了
+
+
+
+
+
+
+
+
+
+LCP 08. 剧情触发时间
+两组三元数组比大小
+class Solution 
+{
+public:
+    vector<int> getTriggerTime(vector<vector<int>>& increase, vector<vector<int>>& requirements) 
+    {
+        int n = increase.size();
+        vector<int> a(n + 1, 0);                                //前缀和
+        vector<int> b(n + 1, 0);
+        vector<int> c(n + 1, 0);
+        for(int i=0; i<n; i++)
+        {
+            a[i + 1] = a[i] + increase[i][0];
+            b[i + 1] = b[i] + increase[i][1];
+            c[i + 1] = c[i] + increase[i][2];
+        }
+        vector<int> res;
+        for (auto v: requirements)
+        {
+            int x = v[0],   y = v[1],   z = v[2];
+            int loc_a = lower_bound(a.begin(), a.end(), x) - a.begin();     //二分查找  偷懒了，用的函数 自己写while（L < R） if L=mid+1  else R=mid 也ok
+            int loc_b = lower_bound(b.begin(), b.end(), y) - b.begin();
+            int loc_c = lower_bound(c.begin(), c.end(), z) - c.begin();
+            int loc = max(loc_a, max(loc_b, loc_c));                        //木桶原理
+            if (loc <= n)
+                res.push_back(loc);
+            else
+                res.push_back(-1);
+        }
+        return res;
+    }
+};
