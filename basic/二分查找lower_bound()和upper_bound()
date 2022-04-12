@@ -8,3 +8,7 @@ https://blog.csdn.net/weixin_41296877/article/details/105494899
 
 int loc_a = lower_bound(a.begin(), a.end(), x) - a.begin();//！！！！
 //这里是指x是lowerbound，找到第一个大于x的位置
+if (loc <= n)
+    res.push_back(loc);
+else
+    res.push_back(-1);
