@@ -1,0 +1,57 @@
+//关键就是bfs时状态还要记录速度也就是队列queue中的元素要记录速度//！！！轻松记录搜索这条路时的上一个节点的速度
+//另外这个speed数组改成set了，可以记忆了
+//写set只是为了不重复搜，真正记忆上一条路径靠的是下面的queue记录的状态包括坐标的和速度
+
+LCP 45. 自行车炫技赛场
+「力扣挑战赛」中 N*M 大小的自行车炫技赛场的场地由一片连绵起伏的上下坡组成，场地的高度值记录于二维数组 terrain 中，场地的减速值记录于二维数组 obstacle 中。
+若选手骑着自行车从高度为 h1 且减速值为 o1 的位置到高度为 h2 且减速值为 o2 的相邻位置（上下左右四个方向），速度变化值为 h1-h2-o2（负值减速，正值增速）。
+选手初始位于坐标 position 处且初始速度为 1，请问选手可以刚好到其他哪些位置时速度依旧为 1。请以二维数组形式返回这些位置。若有多个位置则按行坐标升序排列，
+若有多个位置行坐标相同则按列坐标升序排列。
+class Solution {
+private:
+static bool cmp1(vector<int> x,vector<int> y){
+    if(x[0]==y[0]) return x[1]<y[1];
+    else return x[0]<y[0];
+}
+public:
+    int dir[4][2]={{1,0},{-1,0},{0,1},{0,-1}};
+    vector<vector<int>> bicycleYard(vector<int>& position, vector<vector<int>>& terrain, vector<vector<int>>& obstacle){
+        int n=terrain.size();
+        int m=terrain.back().size();
+        vector<vector<set<int>>> speed(n,vector<set<int>>(m));//m后面跟set<int就会报错
+        //关键就是这个改成set了，可以记忆了
+        //所以写set只是为了不重复搜，真正记忆上一条路径靠的是下面的queue记录的状态包括坐标的和速度
+        //bfs时状态还要记录速度也就是队列queue中的元素要记录速度
+        vector<vector<int>> res;
+        vector<vector<bool>> visited(n,vector<bool>(m,false));
+        queue<vector<int>> qu;
+        vector<int> temp={position[0],position[1],1};
+        qu.push(temp);
+        speed[position[0]][position[1]].insert(1);
+        while(!qu.empty()){
+            int k=qu.size();
+            for(int j=0;j<k;j++){
+                temp=qu.front();
+                qu.pop();
+                for(int i=0;i<4;i++){
+                    int temp_x=temp[0]+dir[i][0];
+                    int temp_y=temp[1]+dir[i][1];
+                    if(temp_x>=0&&temp_x<n&&temp_y>=0&&temp_y<m){
+                        int c_speed=temp[2]+terrain[temp[0]][temp[1]]-terrain[temp_x][temp_y]-obstacle[temp_x][temp_y];
+                        if(speed[temp_x][temp_y].count(c_speed)) continue;
+                        if(c_speed<1) continue;
+                        if(c_speed==1){
+                            vector<int> pos={temp_x,temp_y};
+                            res.push_back(pos);
+                        }
+                        vector<int> ins={temp_x,temp_y,c_speed};
+                            qu.push(ins);
+                            speed[temp_x][temp_y].insert(c_speed);
+                    }
+                }
+            }
+        }
+        sort(res.begin(),res.end(),cmp1);
+        return res;
+    }
+};
