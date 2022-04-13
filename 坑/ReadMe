@@ -15,3 +15,7 @@
 
 dfs中，前面要visited[i][j]=1;后面更要visited[i][j]=0！！！！！！！！
 不不不，回溯才需要，dfs不需要
+
+
+超时：
+k循环减去chalk[n-1]改成k=k%minus[n-1];
