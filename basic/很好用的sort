@@ -30,6 +30,7 @@ Sortt函数的第三个参数可以用这样的语句告诉程序你所采用的
 less<数据类型>()//从小到大排序!!!!!
 greater<数据类型>()//从大到小排序!!!!!!
 //感觉和堆反过来的，堆的greater最小的在上面，是小根堆
+//和正常人类的思维反过来
 struct Work { int d, p; };
 bool cmp1(Work a, Work b) {
     return a.d < b.d;
