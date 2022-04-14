@@ -6,3 +6,11 @@ while里面是left=mid+1；right=mid-1;（这个不一定的）
 https://yuguang.blog.csdn.net/article/details/111935019
 
 常和前缀和结合
+
+模板：
+while (L < R){                       //标准的二分查找框架   符合条件的左端第一个！！！！！！！
+    int mid = (L + R) >> 1;
+    if (check(mid, time, m) == true)  R = mid;
+    else  L = mid + 1;                 //标准的框架
+}
+return L;
