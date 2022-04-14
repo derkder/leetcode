@@ -17,7 +17,7 @@ class Solution {
 public:
     int minTime(vector<int>& time, int m) {
         int L = 0;
-        int R = accumulate(time.begin(), time.end(), 0);
+        int R = accumulate(time.begin(), time.end(), 0);//第三个参数为要计算的初始值。
         while (L < R){                       //标准的二分查找框架   符合条件的左端第一个！！！！！！！
             int mid = (L + R) >> 1;
             if (check(mid, time, m) == true)  R = mid;
