@@ -3,3 +3,44 @@ LCP 12. 小张刷题计划
 在小张刷题计划中，小张需要用 time[i] 的时间完成编号 i 的题目。此外，小张还可以使用场外求助功能，通过询问他的好朋友小杨题目的解法，可以省去该题的做题时间。
 为了防止“小张刷题计划”变成“小杨刷题计划”，小张每天最多使用一次求助。
 我们定义 m 天中做题时间最多的一天耗时为 T（小杨完成的题目不计入做题总时间）。请你帮小张求出最小的 T是多少。
+示例 1：
+输入：time = [1,2,3,3], m = 2
+输出：3
+解释：第一天小张完成前三题，其中第三题找小杨帮忙；第二天完成第四题，并且找小杨帮忙。这样做题时间最多的一天花费了 3 的时间，并且这个值是最小的。
+
+
+
+
+
+！！！！//结果t的范围为0~9，然后用二分搜索这十个数里哪个可以//！！！！
+class Solution {
+public:
+    int minTime(vector<int>& time, int m) {
+        int L = 0;
+        int R = accumulate(time.begin(), time.end(), 0);
+        while (L < R){                       //标准的二分查找框架   符合条件的左端第一个！！！！！！！
+            int mid = (L + R) >> 1;
+            if (check(mid, time, m) == true)  R = mid;
+            else  L = mid + 1;                 //标准的框架
+        }
+        return L;
+    }
+    bool check(int limit, vector<int> time, int m){
+        int use_day = 1;
+        int cur_sum = 0;                            //能求助则求助 第一道题，先求助了再说  省力气
+        int cur_max = time[0];
+        for (int i = 1; i < time.size(); i++){
+            int t = time[i];                        //这道题的花费时间
+            if (cur_sum + min(cur_max, t) <= limit){ //可能t会比cur_max大  如果今天还可以容下
+                cur_sum += min(cur_max, t);         //做
+                cur_max = max(cur_max, t);          //维持
+            }
+            else{
+                use_day += 1;                       //只能明天做了
+                cur_sum = 0;                        //明天的计算量 清0
+                cur_max = t;                        //t是明天第一道题
+            }
+        }
+        return use_day <= m;
+    }
+};
