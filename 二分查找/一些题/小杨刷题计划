@@ -27,8 +27,8 @@ public:
     }
     bool check(int limit, vector<int> time, int m){
         int use_day = 1;
-        int cur_sum = 0;                            //能求助则求助 第一道题，先求助了再说  省力气
-        int cur_max = time[0];
+        int cur_sum = 0;                            
+        int cur_max = time[0];//暂时把第一个当作时间消耗最大的题
         for (int i = 1; i < time.size(); i++){
             int t = time[i];                        //这道题的花费时间
             if (cur_sum + min(cur_max, t) <= limit){ //可能t会比cur_max大  如果今天还可以容下
