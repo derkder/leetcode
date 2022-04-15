@@ -1,1 +1,20 @@
-
+https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/solution/er-cha-shu-de-zui-jin-gong-gong-zu-xian-by-leetc-2/
+class Solution {
+public:
+    TreeNode* ans;
+    bool dfs(TreeNode* root, TreeNode* p, TreeNode* q) {//整体是一个后序遍历
+        if (root == nullptr) return false;
+        bool lson = dfs(root->left, p, q);//左子树是否有pq
+        bool rson = dfs(root->right, p, q);//右子树是否有pq
+        if ((lson && rson) || ((root->val == p->val || root->val == q->val) && (lson || rson))) {//root是公共祖先的额两种情况，这里就是visit函数
+            ans = root;
+        } 
+        return lson || rson || (root->val == p->val || root->val == q->val);//通过这个给lson和rson赋值来给出是否有pq；
+        //上面这个return是后序遍历多出来的函数，用于在后序遍历的过程中，记录一些状态
+        
+    }
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        dfs(root, p, q);
+        return ans;
+    }
+};
