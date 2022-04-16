@@ -3,8 +3,8 @@ struct DoubleList{
     DoubleList *right;
     int key;
     int val;
-    DoubleList():left(nullptr),right(nullptr),key(0),val(0){}
-    DoubleList(int k,int v):left(nullptr),right(nullptr),key(k),val(v){}
+    DoubleList():left(nullptr),right(nullptr),key(0),val(0){};
+    DoubleList(int k,int v):left(nullptr),right(nullptr),key(k),val(v){};
 };
 class LRUCache {
 private:
