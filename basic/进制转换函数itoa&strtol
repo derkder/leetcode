@@ -1,0 +1,33 @@
+将10进制数转换为任意的n进制数，结果为char型：
+ 1.itoa()函数（可以将一个10进制数转换为任意的2-36进制字符串）
+函数原型：char*itoa(int value,char*string,int radix);
+例如：itoa(num, str, 2); num是一个int型的，是要转化的10进制数，str是转化结果，后面的值为目标进制。
+#include<cstdio> 
+#include<cstdlib> 
+int main()  
+{  
+    int num = 10;  
+    char str[100];  
+    itoa(num, str, 2);  //c++中一般用_itoa，用itoa也行,
+    printf("%s\n", str);  
+    return 0;  
+}
+
+
+
+任意2-36进制数转化为10进制数：
+strtol()函数（百度百科）
+函数原型：long int strtol(const char *nptr, char **endptr, int base)
+base是要转化的数的进制，非法字符会赋值给endptr，nptr是要转化的字符，例如:
+int main()  
+{  
+    char buffer[20]="10549stend#12";  
+    char *stop;  
+    int ans=strtol(buffer, &stop, 8);   //将八进制数1054转成十进制，后面均为非法字符
+    printf("%d\n",ans);  
+    printf("%s\n", stop);   
+    return 0;
+}
+ 输出结果：
+556
+9stend#12
