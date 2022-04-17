@@ -1,0 +1,15 @@
+50. Pow(x, n)
+https://leetcode-cn.com/problems/powx-n/solution/acm-xuan-shou-tu-jie-leetcode-powxn-bian-396q/
+
+分治算法由“分”和“治”两部分组成，但是它主要包括 3 个过程：
+划分（Divide）
+求解（Conquer）
+合并（Combine）
+
+
+(1) 划分
+划分就是拆解到问题的最小规模，这里可以用一点点二分的思想。
+n 为偶数时，x^n 可以转换为 x 的 n/2 相乘，然后 x 的 n/2 又可以转换为 x 的 n/4 相乘，...，直到转换成 x^1。
+n 为奇数时，先拆出一个 x，n-1 为偶数，再以上面同样的逻辑去分，只是最后记得把拆出来的 x 带上。
+n 为负数时，-n 是正数，x 的 n 次方，相当于就是 x^ (-n) ，按照上面求完以后取个倒数。
+
