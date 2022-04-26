@@ -1,0 +1,10 @@
+https://blog.csdn.net/weixin_43400091/article/details/122703123
+class Solution{
+    public ListNode reverseList(ListNode head){
+        if(head == null) || head->next == null) //如果最后一个结点不操作
+            return head;
+        ListNode node = reverseList(head->next); //先递归到最底层 然后返回 即一直循环到链尾，底层是head指向倒数第二个，node作为head-》next的化身指向tail即最后一个
+        head->next->next = head; //翻转链表的指向
+        head->next = null; //记得赋值null 防止链表错乱
+        return node; //新链表头永远指向的是原链表的链尾
+    }
