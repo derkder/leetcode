@@ -1,0 +1,41 @@
+1823. 找出游戏的获胜者
+共有 n 名小伙伴一起做游戏。小伙伴们围成一圈，按 顺时针顺序 从 1 到 n 编号。确切地说，从第 i 名小伙伴顺时针移动一位会到达第 (i+1) 名小伙伴的位置，
+其中 1 <= i < n ，从第 n 名小伙伴顺时针移动一位会回到第 1 名小伙伴的位置。
+
+
+第一种最好的解法
+https://leetcode-cn.com/circle/article/BOoxAL/
+f(n,k)=(k+f(n−1,k)−1)modn+1
+class Solution {
+public:
+    int findTheWinner(int n, int k) {
+        int winner = 1;
+        for (int i = 2; i <= n; i++) {
+            winner = (k + winner - 1) % i + 1;
+        }
+        return winner;
+    }
+};
+
+
+
+还有一种解法是用队列模拟环形链表
+class Solution {
+public:
+    int findTheWinner(int n, int k) {
+        queue<int> qu;
+        for (int i = 1; i <= n; i++) {
+            qu.emplace(i);
+        }
+        while (qu.size() > 1) {//每次留下的元素放到队尾再弹出队首的，还是蛮妙的
+            for (int i = 1; i < k; i++) {
+                qu.emplace(qu.front());
+                qu.pop();
+            }
+            qu.pop();
+        }
+        return qu.front();
+    }
+};
+
+
