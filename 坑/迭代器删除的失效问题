@@ -5,6 +5,7 @@ set<int> valset = { 1,2,3,4,5,6 };
 set<int>::iterator iter;
 for (iter = valset.begin(); iter != valset.end(); )
 {
+     cout << *it << " ";
      if (3 == *iter)
           valset.erase(iter++);//这里是先erase了iter指向的，再给iter++了
      else
