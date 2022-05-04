@@ -19,6 +19,17 @@ public:
 
 
 
+第二种是上面一种的基础解法
+index=(index+m-1)%(list.size());
+
+
+
+
+
+
+
+
+
 还有一种解法是用队列模拟环形链表
 class Solution {
 public:
