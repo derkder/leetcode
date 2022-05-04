@@ -5,7 +5,7 @@
 
 第一种最好的解法
 https://leetcode-cn.com/circle/article/BOoxAL/
-f(n,k)=(k+f(n−1,k)−1)modn+1
+f(n,k)=(k+f(n−1,k)−1)modn+1//!!!具体推导就是找f(n,k)和f(n−1,k)的关系，具体具体看链接
 class Solution {
 public:
     int findTheWinner(int n, int k) {
@@ -19,9 +19,27 @@ public:
 
 
 
-第二种是上面一种的基础解法
+第二种是上面一种的基础解法//人类可以想到的还凑合的解法，比下面一种好在不用一个个看过去，核心就是下面一条公式，之前尝试过不行的原因也放在代码后面了
 index=(index+m-1)%(list.size());
-
+class Solution {
+    public int lastRemaining(int n, int m) {
+        if(m==1)
+            return n-1;
+        List<Integer>list=new ArrayList<>();
+        for(int i=0;i<n;i++)
+        {
+            list.add(i);//list.push_back(i);
+;        }
+        int index=0;
+        while (list.size()>1)
+        {
+            index=(index+m-1)%(list.size());
+            list.remove(index);//list.erase（index）;
+        }
+        return list.get(0);
+    }
+}
+//这里虽然是java的list，但在c++也差不多，关键我之前不行是因为不要用迭代器一个个在list里找位置，而是用index下标去找位置
 
 
 
