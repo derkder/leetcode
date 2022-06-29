@@ -1,0 +1,65 @@
+https://zhuanlan.zhihu.com/p/120954212
+1.Fisher_Yates_Shuffle算法【随机取，正常人的思维，空间复杂度高】
+简单来说就是“取出法”，将序列中的元素随机取出，原序列中的该元素被剔除，被取出的元素按顺序排列。依次生成新的序列
+void Fisher_Yates_Shuffle()
+{
+      vector<int>numy_of_Fisher;
+      int counter=num;
+      for(int i=0;i<num;i++)  //随机生成位点，将该位点的元素拿出，重新生成以数组长度为范围的随机数，一直循环下去。
+      {
+          int N=rand()%counter;
+          numy_of_Fisher.push_back(numy[N]);
+          numy.erase(numy.begin()+N);
+          counter--;
+      }
+    for(int i=0;i<num;i++)
+    {
+        cout<<numy_of_Fisher[i]<<" ";
+    }
+    cout<<endl;
+}
+
+
+2.Knuth_Durstenfeld_Shuffle算法【随机取和后面的交换】
+“倒序交换法”，所谓倒序就是从最后一个位点开始，随机生成除最后一位的位点，交换最后一个位点和生成位点的元素，接着固定最后一位不变。随机生成倒数第二位之前的位点。
+交换倒数第二位点和生成位点元素，直到遍历完所有元素，
+void Knuth_Durstenfeld_Shuffle()
+{
+    int counter=num;
+    for(int i=num;i>0;--i)
+    {
+       int N=rand()%i;
+       swap(numy[N],numy[i-1]);
+    }
+    for(int i=0;i<num;i++)
+    {
+        cout<<numy[i]<<" ";
+    }
+    cout<<endl;
+}
+
+
+3、Inside_Out_Algorithm
+“内部交换法”，与第二种方法遍历顺序相反，该方法正序遍历元素。
+分割线i左边的元素随机取一个和i+1互换
+void Inside_Out_Algorithm()
+{
+    vector<int> numy_of_Inside;
+    numy_of_Inside.assign(numy.size(),0);
+    copy(numy.begin(),numy.end(),numy_of_Inside.begin());
+    int k;
+    for(int i=0;i<num;i++)
+    {
+        k=rand()%(i+1);
+        numy_of_Inside[i]=numy_of_Inside[k];
+        numy_of_Inside[k]=numy[i];
+    }
+    for(int i=0;i<num;i++)
+    {
+        cout<<numy_of_Inside[i]<<" ";
+    }
+    cout<<endl;
+}
+
+
+
