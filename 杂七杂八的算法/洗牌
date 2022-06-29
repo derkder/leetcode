@@ -1,5 +1,5 @@
 https://zhuanlan.zhihu.com/p/120954212
-1.Fisher_Yates_Shuffle算法【随机取，正常人的思维，空间复杂度高】
+1.Fisher_Yates_Shuffle算法【随机取，正常人的思维】
 简单来说就是“取出法”，将序列中的元素随机取出，原序列中的该元素被剔除，被取出的元素按顺序排列。依次生成新的序列
 void Fisher_Yates_Shuffle()
 {
