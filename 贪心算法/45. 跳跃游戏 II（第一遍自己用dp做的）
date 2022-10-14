@@ -1,0 +1,26 @@
+给你一个非负整数数组 nums ，你最初位于数组的第一个位置。数组中的每个元素代表你在该位置可以跳跃的最大长度。
+你的目标是使用最少的跳跃次数到达数组的最后一个位置。假设你总是可以到达数组的最后一个位置。
+
+
+思想：每次在上次能跳到的范围（end）内选择一个能跳的最远的位置（也就是能跳到max_far位置的点）作为下次的起跳点
+链接：https://leetcode.cn/problems/jump-game-ii
+class Solution {
+public:
+    int jump(vector<int>& nums) 
+    {
+        int max_far = 0;// 目前能跳到的最远位置
+        int step = 0;   // 跳跃次数
+        int end = 0;    // 上次跳跃可达范围右边界（下次的最右起跳点）
+        for (int i = 0; i < nums.size() - 1; i++)
+        {
+            max_far = std::max(max_far, i + nums[i]);
+            // 到达上次跳跃能到达的右边界了
+            if (i == end)
+            {
+                end = max_far;  // 目前能跳到的最远位置变成了下次起跳位置的有边界
+                step++;         // 进入下一次跳跃
+            }
+        }
+        return step;
+    }
+};
