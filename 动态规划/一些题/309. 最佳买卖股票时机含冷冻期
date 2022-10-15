@@ -3,7 +3,7 @@ https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-cooldown/
 // dp[i][0]: 手上持有股票的最大收益
 // dp[i][1]: 手上不持有股票，并且处于冷冻期中的累计最大收益
 // dp[i][2]: 手上不持有股票，并且不在冷冻期中的累计最大收益
-    
+//本来想的是012对应买入卖出冷静期，感觉还是要更往状态的方向想，像whether持有whether处于冷静期这种
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
