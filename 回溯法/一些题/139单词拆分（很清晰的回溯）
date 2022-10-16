@@ -1,0 +1,26 @@
+class Solution {
+public:
+bool result=false;
+    bool wordBreak(string s, vector<string>& wordDict) {
+        unordered_set<string> wD(wordDict.begin(),wordDict.end());
+        int n=wordDict.size();
+        vector<int> memory(s.size(),-1); //保存每次计算的以startIndex起始的计算结果
+        return backTrack(0,wD,s,memory);
+    }
+    bool backTrack(int startIndex,unordered_set<string>& wD, string& s,vector<int>& memory){
+        if(startIndex==s.size()){
+            return true;
+        }
+        if(memory[startIndex]!=-1) return memory[startIndex];
+        //memory[startIndex]不是初始值，直接使用这里的结果
+        for(int i=startIndex;i<s.size();i++){
+            string temp=s.substr(startIndex,i-startIndex+1);
+            if(wD.count(temp)!=0&&backTrack(i+1,wD,s,memory)){
+                memory[startIndex]=1;//记录以startIndex开始的子串是可以被拆分的
+                return true;
+            }
+        }
+        memory[startIndex]=0;//记录以startIndex开始的子串是不可以被拆分的
+        return false;
+    }
+};
