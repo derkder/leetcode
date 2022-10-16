@@ -9,7 +9,7 @@ s1.erase(1,2); //从1位开始的两个字符
 string s="abcdefg";
 string s1=s.substr(1,3);   //bcd
 string s2=s.substr(4);     //efg
-
+substring第二个参数是长度不是截至的位置！！！
 
 
 string str4 ( "abcdefghijk",3,5);   //从第三个位置开始取5个字符
