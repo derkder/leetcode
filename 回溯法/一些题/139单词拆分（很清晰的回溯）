@@ -1,3 +1,27 @@
+超时的一般回溯：
+class Solution {
+public:
+bool result=false;
+    bool wordBreak(string s, vector<string>& wordDict) {
+        unordered_set<string> wD(wordDict.begin(),wordDict.end());
+        int n=wordDict.size();
+        return backTrack(0,wD,s,memory);
+    }
+    bool backTrack(int startIndex,unordered_set<string>& wD, string& s,vector<int>& memory){
+        if(startIndex==s.size()){
+            return true;
+        }
+        for(int i=startIndex;i<s.size();i++){
+            string temp=s.substr(startIndex,i-startIndex+1);
+            if(wD.count(temp)!=0&&backTrack(i+1,wD,s,memory)){
+                return true;
+            }
+        }
+        return false;
+    }
+};
+
+不超时的记忆化回溯：
 class Solution {
 public:
 bool result=false;
