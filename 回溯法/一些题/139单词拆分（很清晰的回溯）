@@ -1,4 +1,5 @@
-超时的一般回溯：
+链接：https://leetcode.cn/problems/word-break/solution/139-dan-ci-chai-fen-hui-su-fa-wan-quan-b-0zwf/
+
 class Solution {
 public:
 bool result=false;
