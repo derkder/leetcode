@@ -1,0 +1,29 @@
+前序：
+public static void preOrderTraverse1(TreeNode node) {
+    if(node != null) {
+        System.out.print(node.val + " ");
+        preOrderTraverse1(node.left);
+        preOrderTraverse1(node.right);
+    }
+}
+
+
+中序：
+public static void midOrderTraverse1(TreeNode node) {
+    if(node != null) {
+        midOrderTraverse1(node.left);
+        System.out.print(node.val + " ");
+        midOrderTraverse1(node.right);
+    }
+
+
+后序：
+public static void postOrderTraverse1(TreeNode node) {
+    if(node != null) {
+        postOrderTraverse1(node.left);
+        postOrderTraverse1(node.right);
+        System.out.print(node.val + " ");
+    }
+}
+
+https://blog.csdn.net/weixin_45744426/article/details/106181375
