@@ -1,0 +1,21 @@
+就是在链表前加一个节点：ListNode* dummy = new ListNode(0, head);
+移除倒数第n个
+ListNode* removeNthFromEnd(ListNode* head, int n) {
+        ListNode* dummy = new ListNode(0, head);//！！！！
+        ListNode* first = head;
+        ListNode* second = dummy;//！！！！
+        for (int i = 0; i < n; ++i) {
+            first = first->next;
+        }
+        while (first) {
+            first = first->next;
+            second = second->next;
+        }
+        second->next = second->next->next;
+        ListNode* ans = dummy->next;//！！！！
+        delete dummy;//！！！！
+        return ans;
+    }
+
+作者：LeetCode-Solution
+链接：https://leetcode.cn/problems/remove-nth-node-from-end-of-list/solution/shan-chu-lian-biao-de-dao-shu-di-nge-jie-dian-b-61/
