@@ -1,0 +1,21 @@
+用处：
+1、代替冗长复杂的变量声明
+auto i = l1.begin();=>list<int>::iterator i = l1.begin()
+
+
+2、定义模板参数时，用于声明依赖模板参数的变量
+template <typename _Tx,typename _Ty>
+void Multiply(_Tx x, _Ty y)
+{
+    auto v = x+y;
+    std::cout << v;
+}
+
+3模板函数依赖于模板参数的返回值
+template <typename _Tx, typename _Ty>
+auto multiply(_Tx x, _Ty y)->decltype(x*y)
+{
+    return x*y;
+}
+decltype操作符，它是C++11标准引入的新的运算符，其目的也是解决泛型编程中有些类型由模板参数决定
+https://blog.csdn.net/weixin_43744293/article/details/117440727?
