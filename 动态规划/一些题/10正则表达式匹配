@@ -1,4 +1,38 @@
-
+class Solution {
+    //丝毫没有想到的动态规划
+    //dp[i][j]：s的前i个字符与p的前j个字符是否相匹配(这个状态人类也很难想到啊)
+public:
+    bool isMatch(string s, string p) {
+        int m=s.size();
+        int n=p.size();
+        //当 i, j 指向的字符均为字母（或 '.' 可以看成一个特殊的字母）时，
+        //只需判断对应位置的字符即可，
+        //若相等，只需判断 i,j 之前的字符串是否匹配即可，转化为子问题 f[i-1][j-1].
+        //若不等，则当前的 i,j 肯定不能匹配，为 false.
+        auto matches=[&](int i,int j){
+            if(0==i) return false;
+            if('.'==p[j-1]) return true;
+            return s[i-1]==p[j-1];
+        };
+        vector<vector<int>> dp(m+1,vector<int>(n+1));//本质数组里是bool
+        dp[0][0]=true;//没有意义的状态置为true
+        for(int i=0;i<=m;++i){
+            for(int j=1;j<=n;++j){
+                //如果当前 j 指向的字符为 '*'，则不妨把类似 'a*', 'b*' 等的当成整体看待
+                if(p[j-1]=='*'){
+                    dp[i][j]|=dp[i][j-2];
+                    if(matches(i,j-1)) dp[i][j]|=dp[i-1][j];
+                    //让 'b*' 不再进行匹配，把 'b*' 丢弃。
+                }
+                else{
+                    if(matches(i,j)) dp[i][j]|=dp[i-1][j-1];
+                    //当 'b*' 匹配完 'b' 之后，它仍然可以继续发挥作用。因此可以只把 i 前移一位
+                }
+            }
+        }
+        return dp[m][n];
+    }
+};
 
 
 
