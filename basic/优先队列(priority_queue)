@@ -4,6 +4,17 @@ priority_queue <int,vector<int>,greater<int> > q;
 //降序队列
 priority_queue <int,vector<int>,less<int> >q;
 
+
+改变排序使用的函数：
+/*static*/ bool cmp(pair<int, int>& m, pair<int, int>& n) {
+        return m.second > n.second;
+    }
+priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(&cmp)> q(cmp);
+
+
+
+
+
 703.数据流中的第 K 大元素
 设计一个找到数据流中第 k 大元素的类（class）。注意是排序后的第 k 大元素，不是第 k 个不同的元素。
 class KthLargest {
