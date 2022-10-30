@@ -2,3 +2,29 @@
 这里用比较通用的dp（也可以用记忆化搜索）
 这题也没好好想，或许一开始想到暴力解答，然后试图优化，就可以想到dp了
 dp[i][j]代表的状态：i到j是回文子串
+class Solution {
+    public:
+    int countSubstrings(string s) {
+        int n=s.size();
+        vector<vector<bool>> dp(n+1,vector<bool>(n+1,false));
+        int ans=0;
+        for(int i=n;i>=1;--i){//！！注意遍历顺序，确保dp[i+1][j-1]已经算过！！
+            for(int j=i;j<=n;++j){
+                if(j-i>1){
+                    dp[i][j]=dp[i+1][j-1]&&(s[i-1]==s[j-1]);//这里的i+1会大于j-1，所以有下面的来排除
+                    if(dp[i][j]==true){
+                        //cout<<s.substr(i-1,j-i+1)<<endl;
+                        ans++;
+                    }
+                }
+                else{
+                    if(s[i-1]==s[j-1]){
+                        dp[i][j]=true;
+                        ans++;
+                    }
+                }
+            }
+        }
+        return ans;
+    }
+};
