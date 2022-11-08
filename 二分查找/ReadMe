@@ -13,3 +13,11 @@ while (L < R){                       //标准的二分查找框架   符合条�
     else  L = mid + 1;                 //标准的框架
 }
 return L;
+
+
+while (L <= R){   
+    if(mid==t) return nums[mid];
+    if (check(mid, time, m) == true)  R = mid-1;
+    else  L = mid + 1;                 
+}
+return -1;
