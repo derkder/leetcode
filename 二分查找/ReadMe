@@ -8,8 +8,7 @@ https://yuguang.blog.csdn.net/article/details/111935019
 常和前缀和结合
 
 模板：
-while (L < R){                       //标准的二分查找框架   符合条件的左端第一个！！！！！！！   （是小于不是小于等于！）
-    int mid = (L + R) >> 1;
+while (L < R){                       //标准的二分查找框架   符合条件的左端第一个！！！！！！！   
     if (check(mid, time, m) == true)  R = mid;
     else  L = mid + 1;                 //标准的框架
 }
