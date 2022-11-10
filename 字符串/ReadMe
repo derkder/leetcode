@@ -13,3 +13,6 @@ substring第二个参数是长度不是截至的位置！！！
 
 
 string str4 ( "abcdefghijk",3,5);   //从第三个位置开始取5个字符
+
+
+string可以用“+”拼接欸
