@@ -1,0 +1,39 @@
+class Solution {
+public:
+    int ans=0;
+    int sumNumbers(TreeNode* root) {
+        dfs(root,0);
+        return ans;
+    }
+    void dfs(TreeNode* root,int num){
+        num=num*10+root->val;
+        if(root->left==nullptr&&root->right==nullptr) ans+=num;
+        if(root->left!=nullptr) dfs(root->left,num);
+        if(root->right!=nullptr) dfs(root->right,num);
+        return;
+    }
+};
+
+
+
+
+class Solution {
+    //如果遇到叶子节点，则将叶子节点对应的数字加到数字之和。如果当前节点不是叶子节点，则计算其子节点对应的数字，然后对子节点递归遍历
+public:
+    int sumNumbers(TreeNode* root) {
+        return dfs(root,0);
+    }
+
+    int dfs(TreeNode* root,int prevSum){
+        if(root!=nullptr){
+            int sum=prevSum*10+root->val;
+            if(root->left==nullptr&&root->right==nullptr){//叶子节点
+                return sum;
+            }
+            else{
+                return dfs(root->left,sum)+dfs(root->right,sum);
+            }
+        }
+        return 0;
+    }
+};
