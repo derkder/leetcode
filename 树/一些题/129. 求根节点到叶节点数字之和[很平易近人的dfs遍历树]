@@ -1,3 +1,6 @@
+所以我觉得树的搜索，就是遍历到每个叶节点的路径
+
+
 class Solution {
 public:
     int ans=0;
