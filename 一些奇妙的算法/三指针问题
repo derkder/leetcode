@@ -1,0 +1,28 @@
+16. 最接近的三数之和
+给你一个长度为 n 的整数数组 nums 和 一个目标值 target。请你从 nums 中选出三个整数，使它们的和与 target 最接近。
+class Solution {
+public:
+//三指针
+    int threeSumClosest(vector<int>& nums, int target) {
+        int min=0,neg=0,pos=0;
+        int n=nums.size();
+        int diff=INT_MAX;
+        int ret=0;
+        sort(nums.begin(),nums.end(),less<int>());//排序
+        for(int i=0;i<n;i++){//第一个指针控制第一个大循环
+            int l=i+1;
+            int r=n-1;
+            while(l<r){//第二三个指针慢慢往中间挪
+                int ans=nums[i]+nums[l]+nums[r];
+                if(ans==target) return ans;
+                if(abs(ans-target)<diff){
+                    diff=abs(ans-target);
+                    ret=ans;
+                }
+                if(ans>target) r--;
+                else l++;
+            }
+        }
+        return ret;
+    }
+};
