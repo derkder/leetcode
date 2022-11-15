@@ -16,6 +16,18 @@ public:
         return winner;
     }
 };
+上面的迭代不太方便理解，下面的递归更好理解（也不是太好理解，还是得照着推一遍
+class Solution {
+public:
+    int findTheWinner(int n, int k) {
+        if (n == 1) {
+            return 1;
+        }
+        return (k + findTheWinner(n - 1, k) - 1) % n + 1;
+    }
+};
+
+
 
 
 
