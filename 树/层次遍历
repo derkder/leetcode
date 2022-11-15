@@ -1,13 +1,20 @@
   while (!Q.empty()) {
-      int size = Q.size();     
-      for(int i = 0; i < size; i++) {// 遍历这一层的所有节点
-          Node* node = Q.front();// 从队首取出元素
+      int size = Q.size();  //用size记录每一层的大小   
+      for(int i = 0; i < size; i++) {//二层循环，遍历这一层的所有节点
+          Node* node = Q.front();
           Q.pop();
           cout<<q->val;
-          if (node->left != nullptr) {// 拓展下一层节点
-              Q.push(node->left);
-          }
-          if (node->right != nullptr) {
-              Q.push(node->right);
-          }
-      }
+          if (node->left != nullptr) Q.push(node->left);
+          if (node->right != nullptr) Q.push(node->right);
+}
+
+
+递归版本：
+void order(TreeNode* cur, vector<vector<int>>& result, int depth)//记录深度
+    {
+        if (cur == nullptr) return;
+        if (result.size() == depth) result.push_back(vector<int>());
+        result[depth].push_back(cur->val);
+        order(cur->left, result, depth + 1);
+        order(cur->right, result, depth + 1);
+    }
