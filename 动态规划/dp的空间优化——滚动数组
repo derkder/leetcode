@@ -33,3 +33,14 @@ public:
         return maxAns;
     }
 };
+
+
+
+ps这题有更好的解法：
+分治：
+lSum 表示 [l,r]内以 l 为左端点的最大子段和
+rSum 表示 [l,r]内以 r 为右端点的最大子段和
+mSum 表示 [l,r]内的最大子段和
+iSum 表示 [l,r]的区间和
+
+
