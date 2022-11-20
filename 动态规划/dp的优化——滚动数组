@@ -1,2 +1,35 @@
 降低空间复杂度
-具体：
+具体：貌似是利用变量代替dp数组，例如下面的题
+53. 最大子数组和
+给你一个整数数组 nums ，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
+未优化前：
+class Solution {
+    //dp【i】 代表以第 i个数结尾的「连续子数组的最大和
+    //f(i)=max{f(i−1)+nums[i],nums[i]}
+    //再优化就是用pre变量记录f【i-1】
+public:
+    int maxSubArray(vector<int>& nums) {
+        int n=nums.size();
+        vector<int> dp(n,INT_MIN);
+        dp[0]=nums[0];
+        int ans=dp[0];
+        for(int i=1;i<n;++i){
+            dp[i]=max(dp[i-1]+nums[i],nums[i]);
+            ans=ans>dp[i]?ans:dp[i];
+        }
+        return ans;
+    }
+};
+
+优化后：
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        int pre = 0, maxAns = nums[0];
+        for (const auto &x: nums) {
+            pre = max(pre + x, x);
+            maxAns = max(maxAns, pre);
+        }
+        return maxAns;
+    }
+};
