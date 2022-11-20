@@ -16,7 +16,7 @@ public:
                 swap(nums[i], nums[p2]);
                 --p2;
             }
-            if (nums[i] == 0) {//i指向0，和p0指向的数字交换，p0++
+            if (nums[i] == 0) {//i指向0，和p0指向的数字交换，p0++【因为p0前面的一定是排号的，所以不需要像p2一样不断】
                 swap(nums[i], nums[p0]);
                 ++p0;
             }
