@@ -1,3 +1,10 @@
+!!!//int loc_a = lower_bound(a.begin(), a.end(), x) - a.begin();//！！！！记得后面要减的
+int loc_a = lower_bound(a.begin(), a.begin()+4, x) - a.begin();
+
+
+
+
+
 lower_bound()和upper_bound()
 1：lower_bound(begin,end,val)；该函数可以在一个已经排序好的序列中，从begin位置一直到end位置前一个来查找第一个大于等于val值的位置，返回这个位置的指针，同时，这个指针减去begin，即可得到偏移值offset，也就是数组的下标。
 upper_bound(begin,end,val)；该函数和上面一个函数类似，只不过查找的是第一个大于val的位置，注意：上述连个函数，如果在没有找到符合条件的位置的话，就返回end，也就是超出范围的一个指针，如果是数组的话，也就是越界的指针。
@@ -6,7 +13,7 @@ https://blog.csdn.net/weixin_41296877/article/details/105494899
 
 
 
-int loc_a = lower_bound(a.begin(), a.end(), x) - a.begin();//！！！！
+!!!//int loc_a = lower_bound(a.begin(), a.end(), x) - a.begin();//！！！！
 //这里是指x是lowerbound，找到第一个大于x的位置
 if (loc <= n)
     res.push_back(loc);
