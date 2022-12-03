@@ -1,1 +1,4 @@
 Set不允许两个元素有相同的键值。
+遍历：
+简易：for(num:nums）
+正规： for (const int& num : num_set)
