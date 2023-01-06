@@ -8,7 +8,7 @@
 方法一：二分查找
 //核心：数小于自己的数有多少个，对于每一个数进行遍历，这样不会超过空间要求，然后用二分优化
 //虽然数组里的数是无序的，但是数字的范围就在[1, n]里，所以可以二分
-（基础：我们定义cnt[i] 表示nums 数组中小于等于i的数有多少个，假设我们重复的数是target，那么[1,target−1]里的所有数满足cnt[i]≤i，[target,n] 里的所有数满足cnt[i]>i，具有单调性。）
+（基础：我们定义cnt[i] 表示nums 数组中!!小于等于i的数!!有多少个，假设我们重复的数是target，那么[1,target−1]里的所有数满足cnt[i]≤i，[target,n] 里的所有数满足cnt[i]>i，具有单调性。）
 class Solution {
 public:
     int findDuplicate(vector<int>& nums) {
