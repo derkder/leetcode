@@ -33,3 +33,18 @@ public:
 
 链接：https://leetcode.cn/problems/find-the-duplicate-number/solution/xun-zhao-zhong-fu-shu-by-leetcode-solution/
 
+
+
+
+
+
+
+
+
+方法2 快慢指针【参考环形指针2]
+按照下面的方式移动快慢指针
+slow = nums[slow];
+fast = nums[nums[fast]];
+至到fast==slow，派出ptr指针找到环的人口就是重复数字
+
+
