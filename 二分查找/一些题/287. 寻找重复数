@@ -41,7 +41,7 @@ public:
 
 
 
-方法2 快慢指针【参考环形指针2]
+方法2 快慢指针【参考环形指针2,把数组看作是有环链表，每个num【i】指向index=num【i】的数]
 按照下面的方式移动快慢指针
 slow = nums[slow];
 fast = nums[nums[fast]];
