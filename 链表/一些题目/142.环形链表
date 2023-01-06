@@ -15,3 +15,26 @@
     C = An - B
     当 n=1 时 , 0 <= C < A
 故 慢指针在第一圈必定能和快指针相遇
+
+
+
+
+
+ListNode *detectCycle(ListNode *head) {
+        ListNode *slow=head;
+        ListNode *fast=head;
+        while(fast!=nullptr){
+            fast=fast->next;
+            if(fast!=nullptr) fast=fast->next;
+            else return nullptr;
+            slow=slow->next;
+            if(slow==fast) break;
+        }
+        if(fast==nullptr) return nullptr;
+        ListNode *ptr=head;
+        while(ptr!=slow){
+            ptr=ptr->next;
+            slow=slow->next;
+        }
+        return slow;
+    }
