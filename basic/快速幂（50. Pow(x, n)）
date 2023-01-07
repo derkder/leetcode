@@ -1,0 +1,22 @@
+https://leetcode.cn/problems/powx-n/solution/powx-n-by-leetcode-solution/
+分治：分为n是奇数偶数两种情况，若n是偶数，计算y=x^(n/2),y*y;若n是奇数，则y=x*(n-1/2)
+ class Solution {
+public:
+    double myPow(double x, int n) {
+        long long temp=n;//因为在后面如果n是INT_MIN转换为正数的话会报错的，所以用long long保存
+        if(n<0){
+            return 1/fastPow(x,-temp);
+        }
+        return fastPow(x,temp);
+    }
+    double fastPow(double x, long long n){
+        if(0==n) return 1;
+        if(n%2){//n是奇数
+            return x*fastPow(x,n-1);
+        }
+        else{
+            double temp=fastPow(x,n/2);
+            return temp*temp;
+        }
+    }
+};
