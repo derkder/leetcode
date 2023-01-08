@@ -2,3 +2,12 @@ Set不允许两个元素有相同的键值。
 遍历：
 简易：for(num:nums）
 正规： for (const int& num : num_set)
+
+
+补充：set和map的遍历
+map<int, string>::reverse_iterator   iter;
+for(iter = mapStudent.rbegin(); iter != mapStudent.rend(); iter++){
+    cout<<iter->first<<" "<<iter->second<<endl;
+}
+for(set<int>::iterator i=all.begin();i!=all.end();i++)
+        cout<<*i<<endl; //注意指针运算符
