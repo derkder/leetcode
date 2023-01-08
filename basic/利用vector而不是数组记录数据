@@ -1,3 +1,0 @@
-vector<int> res;
-res.push_back(root->val);
-return res;
