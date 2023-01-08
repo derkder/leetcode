@@ -41,6 +41,7 @@ public bool backtracking (此时已经走完的路径startIndex，此次可选�
        加memory数组记录
 2、    判断是否需要剪枝：
        从递归树中看到，路径没有重复的，也没有不符合条件的，所以不需要剪枝
+       剪枝的位置：处理节点之前（其实就是处理节点的第一部分）
 
 
 超级链接:https://leetcode.cn/problems/subsets/solution/c-zong-jie-liao-hui-su-wen-ti-lei-xing-dai-ni-gao-/
