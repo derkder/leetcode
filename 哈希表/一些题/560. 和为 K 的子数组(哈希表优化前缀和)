@@ -1,0 +1,16 @@
+我们考虑以i结尾的和为k的连续子数组个数时只要统计有多少个前缀和为pre[i]−k的pre[j] 
+哈希表mp,以和为键，出现次数为对应的值，记录pre[i]出现的次数
+！！！！就是用哈希表代替vector记录前缀，因为这样顺便可以记录同一个前缀和的值出现的次数！！
+int subarraySum(vector<int>& nums, int k) {
+  //本来想回溯的，一看是连续数组，所以用dp？
+  //dp也不太行，用前缀和+哈希表优化
+  unordered_map<int,int> m;
+  m[0]=1;
+  int count=0,pre=0;
+  for(int i=0;i<nums.size();++i){
+      pre+=nums[i];
+      if(m.find(pre-k)!=m.end()) count+=m[pre-k];
+      m[pre]++;
+  }
+  return count;
+}
