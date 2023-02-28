@@ -1,0 +1,32 @@
+给你一个字符串 s，请你将 s 分割成一些子串，使每个子串都是回文。
+输入：s = "aab"
+输出：1
+解释：只需一次分割就可将 s 分割成 ["aa","b"] 这样两个回文子串。
+
+//核心分成两步：
+//第一步动规求ij对应的字符串是否回文
+//第二步动规求数组dp[i]=min(dp[j])+1(0<=j<i&&s[j+1][i]是回文串)[除非s[0][j]本身就是字符串]
+//难点在于：分两步以及第二步的状态转移函数地球人很难想出来，其实还是可以想出来
+//！！并且dp[i]记录前i个的最小的是很重要的思想！！！！！
+    int minCut(string s) {
+        int n=s.size();
+        vector<vector<bool>>  hw(n,vector<bool>(n,0));
+        for(int i=n-1;i>=0;--i){
+            for(int j=i;j<=n-1;++j){
+                if(i==j) hw[i][j]=true;
+                else if(j==i+1) hw[i][j]=(s[i]==s[j]);
+                else hw[i][j]=hw[i+1][j-1]&&s[i]==s[j];
+            }
+        }
+        vector<int> dp(n,0);
+        for(int k=0;k<n;++k){
+            if(hw[0][k]) dp[k]=0;
+            else{
+                dp[k]=k;
+                for(int l=0;(l<n-1);++l){
+                    if(hw[l+1][k]) dp[k]=min(dp[k],dp[l]+1);
+                }
+            }
+        }
+        return dp[n-1];
+    }
