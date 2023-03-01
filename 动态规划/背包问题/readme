@@ -6,5 +6,5 @@ https://tangshusen.me/2019/11/24/knapsack-problem/
 
 
 ！！！如果使用一维dp数组，物品遍历放外层，背包遍历放内层，且内侧for循环倒序！！！！
-!!二维数组的初始化： 
+!!二维数组的初始化(其实想想递归公式就知道了)： 
   for (int j = weight[0]; j <= bagweight; j++) dp[0][j] = value[0];
