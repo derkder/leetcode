@@ -14,3 +14,12 @@ public:
     }
 };
 
+struct ListNode{
+    int val;
+    ListNode *next;
+    ListNode(int x): val(x), next(nullptr){}//没有分号这里！！！！
+}
+
+
+ListNode *list=new ListNode(0);
+
