@@ -1,0 +1,41 @@
+全排列和其他的回溯还是有一些不样的【startindex变成已经包含过那些】，然后树的每层表示在最后的答案中先选上这个元素
+
+题目：
+  给定一个可包含重复数字的序列 nums ，按任意顺序 返回所有不重复的全排列。
+示例 1：
+输入：nums = [1,1,2]
+输出： [[1,1,2], [1,2,1], [2,1,1]]
+
+//去重一定要对元素进行排序，这样我们才方便通过相邻的节点来判断是否重复使用了。
+//！！树的每一层拿一个
+class Solution {
+public:
+vector<vector<int>> ans;
+    void backtrack(vector<int>& temp,vector<int>& used,vector<int>& nums){
+        if(temp.size()==used.size()){
+            ans.push_back(temp);
+        }
+        int n=used.size();
+        for(int i=0;i<n;++i){
+            if(used[i]) continue;
+            if(i>0&&nums[i]==nums[i-1]&&used[i-1]==false){//!!!!剪枝条件
+            //nums[i]==nums[i-1]的条件下，used[i-1]==false说明同一树层上有两个重复的元素，反之说明在上面的树层已经出现过了
+                continue;
+            }
+            used[i]=true;
+            temp.push_back(nums[i]);
+            backtrack(temp,used,nums);
+            used[i]=false;
+            temp.pop_back();
+        }
+        return;
+    }
+    vector<vector<int>> permuteUnique(vector<int>& nums) {
+        int n=nums.size();
+        sort(nums.begin(),nums.end());
+        vector<int> temp;
+        vector<int> used(n,false);
+        backtrack(temp,used,nums);
+        return ans;
+    }
+};
