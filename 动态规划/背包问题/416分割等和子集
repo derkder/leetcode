@@ -1,1 +1,27 @@
+class Solution {
+public:
+    bool canPartition(vector<int>& nums) {
+        int n=nums.size();
+        vector<int> dp(10001,0);
+        int sum=accumulate(nums.begin(),nums.end(),0);
+        if(sum%2==1) return false;
+        int target=sum/2;
+        for(int i=0;i<n;++i){
+            for(int j=target;j>=nums[i];--j){
+                dp[j]=max(dp[j],dp[j-nums[i]]+nums[i]);
+            }
+        }
+        if(dp[target]==target) return true;
+        return false;
+    }
+};
 
+
+//转换成01背包问题【这怎么想到的我吐了，能不能装一个正好sum/2大小的背包？】
+//传统的 背包问题要求选取的物品的重量之和不能超过背包的总容量，这道题则要求选取的数字的和恰好等于整个数组的元素和的一半。
+//背包的体积为sum/2；放入的商品重量为元素的数值，价值也为元素的数值
+
+//dp[j]表示背包总容量（所能装的总重量）是j，放进物品后，背的最大重量为dp[j]
+//拿输入数组 [1, 5, 11, 5]，举例， dp[7] 只能等于 6，因为 只能放进 1 和 5
+//dp[j] = max(dp[j], dp[j - nums[i]] + nums[i]);
+//如果使用一维dp数组，物品遍历放外层，背包遍历放内层，且内侧for循环倒序!!
