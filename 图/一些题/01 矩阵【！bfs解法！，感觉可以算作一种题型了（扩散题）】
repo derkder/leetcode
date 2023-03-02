@@ -54,7 +54,7 @@ public:
 };
 
 
-dp：
+dp：【本来应该是四个方向，但其实有两个和这两个重复了】
 class Solution {
 public:
     vector<vector<int>> updateMatrix(vector<vector<int>>& matrix) {
