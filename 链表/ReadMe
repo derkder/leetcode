@@ -23,3 +23,6 @@ struct ListNode{
 
 ListNode *list=new ListNode(0);
 
+
+链表题指来指去指不对的原因多半是：当pre=next后，pre->next也会改变next->next的呀呀呀
+
