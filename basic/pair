@@ -16,5 +16,5 @@ pair<int, double> p1;
  p1 = make_pair(1, 1.2);
  
 访问：
-p1.first;                   // 返回对象p1中名为first的公有数据成员
+p1.first;                   // 返回对象p1中名为first的公有数据成员,!!!:后面不加（）的
 p1.second;                 // 返回对象p1中名为second的公有数据成员
