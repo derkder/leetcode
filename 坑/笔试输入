@@ -18,3 +18,5 @@ cin.get()
   cin.getline(temp, 9);
 
  
+当同时使用cin>>, getilne()时，需要注意的时，在cin>>读入数据完成之后，如果接下来的字符是换行符，那么
+在使用getline()之前需要用getchar()把换行符吞掉，然后再使用getline()读入下一行数据
