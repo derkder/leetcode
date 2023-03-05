@@ -26,6 +26,6 @@ cin.get()
 字符串的输入：
 cin.get(字符数组名,接收字符数)输入字符串
 gets_s(字符串名字)输入字符串可以接收空格和tab键，回车结束：
-    char a[20];//这里不能写string
+    char a[20];//这里不能写string，因为string相当于一个类，和char*不一样的
         gets_s(a);
         getchar();
