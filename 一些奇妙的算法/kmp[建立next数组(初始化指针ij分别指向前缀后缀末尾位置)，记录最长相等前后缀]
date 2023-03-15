@@ -4,7 +4,7 @@ https://blog.csdn.net/weixin_46007276/article/details/104372119
 
 
 
-核心：建立next数组，记录最长相等前后缀
+核心：建立next数组，记录【字串的】最长相等前后缀
 next[i]=j,含义是：下标为i 的字符前的字符串最长相等前后缀的长度为j，也表示该处字符不匹配时应该回溯到的字符的下标
 （next[0]=-1）
 
@@ -19,8 +19,32 @@ while (j<t.length-1) //不是<=
     j++;k++;
     next[j]=k;
   }
-  else
-  {
-    k=next[k];
-  }
+  else k=next[k];
 }
+
+整体：
+int strStr(string haystack, string needle) {
+        vector<int> next(haystack.length(),0);
+        next[0]=-1;
+        if(needle.length()>haystack.length()) return -1;
+        //初始化next数组
+        int k=-1,j=0;
+        while(j<(int)needle.length()-1){
+            if(-1==k||needle[j]==needle[k]){
+                j++;k++;
+                next[j]=k;
+                //cout<<j<<next[j]<<endl;
+            }
+            else k=next[k];
+        }
+        //kmp算法，移动的是字串
+        int i=0;j=0;
+        while( j<(int)needle.length() && i<haystack.length() ){
+            if(-1==j||needle[j]==haystack[i]){
+                i++;j++;
+            }
+            else j=next[j];//把子串往前移动
+        }
+        if(j>=needle.length()) return(i-needle.length());
+        else return -1;
+    }
