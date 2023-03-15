@@ -1,0 +1,6 @@
+现象：
+  j=-1;i=s.length();很明显i是个大于j的数]
+  但是j<s.length() return false
+
+需要强制类型转换：
+  j<(int)s.length()
