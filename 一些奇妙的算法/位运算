@@ -3,5 +3,28 @@
   给你一个字符串数组 words ，找出并返回 length(words[i]) * length(words[j]) 的最大值，并且这两个单词不含有公共字母。如果不存在这样的两个单词，返回 0
   思路：
     O(n*n)的算法思路很容易想，判断字符串是否有公共字母本来只能想到set
-    但根据位运算，我们可以使用一个int来代指某个word[i]。第二十六位来代指字母a~z是否出现过
-    
+    但根据位运算，我们可以使用一个int来代指某个word[i]。第二十六位来代指字母a~z是否出现过,也就是用位运算进行状态压缩
+    还要用哈希表优化防止超时
+  核心解法：
+     int u = w.charAt(i) - 'a';
+     t |= (1 << u);
+   题解：
+   int maxProduct(vector<string>& words) {
+        int ans=0;
+        int n=words.size();
+        vector<int> masks(n,0);//这里可以用map装优化，对于词频相同（mask 值相等）的两字符，只需要保留字符长度大的即可
+        for(int i=0;i<n;++i){
+            for(int j=0;j<words[i].length();++j){
+                int temp=words[i][j]-'a';
+                masks[i]|=(1<<temp);
+            }
+        }
+        for(int i=0;i<n;++i){
+            for(int j=i+1;j<n;++j){
+                if((masks[i]&masks[j])==0){
+                    ans=max(ans,(int)(words[i].length()*words[j].length()));
+                }
+            }
+        }
+        return ans;
+    }
