@@ -1,2 +1,39 @@
 int cnt[3001]{}；
 https://leetcode.cn/problems/the-number-of-beautiful-subsets/solution/tao-lu-zi-ji-xing-hui-su-pythonjavacgo-b-fcgs/
+
+
+例题：
+2597. 美丽子集的数目
+给你一个由正整数组成的数组 nums 和一个 正 整数 k 。
+如果 nums 的子集中，任意两个整数的绝对差均不等于 k ，则认为该子数组是一个 美丽 子集。
+返回数组 nums 中 非空 且 美丽 的子集数目。
+
+class Solution {
+public:
+//本来想用回溯
+//后来感觉做不动了，想用dp,dp是因为看错了，是不等于不是大于，每次都看错，tmd
+//看了答案发现就是回溯和dp，md
+    int cnt[3001]{};
+    int ansNum=-1;//去掉空集
+    //其实只用统计个数不需要temp的
+    void backTrack(int startIndex,vector<int>& nums,int k){//temp表示的选择列表是指在index后的
+         ++ansNum;
+        if(nums.size()==startIndex) return;
+        for(int i=startIndex;i<nums.size();++i){
+            int x=nums[i]+k;//避免负数下标，所以相当于整体都加k
+            if(cnt[x-k]==0&&cnt[x+k]==0){
+                ++cnt[x];
+                backTrack(i+1,nums,k);
+                --cnt[x];
+            }
+        }
+    }
+    int beautifulSubsets(vector<int>& nums, int k) {
+        int n=nums.size();
+        //可以将vector用set替代这样可以方便看是否有当前要加入的数字+-2的数字
+        //但是set会超时！只能用vector
+        backTrack(0, nums,k);
+        return ansNum;
+    }
+                                                                                        
+};
