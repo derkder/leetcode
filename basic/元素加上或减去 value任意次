@@ -1,1 +1,3 @@
 数 x 可以变成任意满足 y mod value == x mod value 的数 y
+因此，我们可以把整个序列按元素取模的值分成 value 类
+https://leetcode.cn/problems/smallest-missing-non-negative-integer-after-operations/solution/tan-xin-by-tsreaper-nlw0/
