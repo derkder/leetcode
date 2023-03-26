@@ -2,4 +2,7 @@
 因此，我们可以把整个序列按元素取模的值分成 value 类
   // t 是元素 x 所属的类别
   int t = (x % v + v) % v;
+  
+  //不直接x%v是因为x有可能是负的
+  //这样的躲避负的的方法有点意思
 https://leetcode.cn/problems/smallest-missing-non-negative-integer-after-operations/solution/tan-xin-by-tsreaper-nlw0/
