@@ -8,6 +8,7 @@
 
 
 //细节一直错nmd
+//这种问题是01背包里特殊的，dp[i][j]表示前i个石头是否能凑出重量j
 class Solution {
 public:
     int lastStoneWeightII(vector<int>& stones) {
