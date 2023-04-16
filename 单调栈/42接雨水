@@ -1,8 +1,41 @@
 按列来思考，不要按行来思考
 每一列雨水的高度，取决于，该列左侧最高的柱子和右侧最高的柱子中最矮的那个柱子的高度。
-
-
+按列算：
 为了计算上面的东西
 法一、每一列 双指针
 法二、每一列 动态规划
-法三、单调栈
+
+
+按行算：
+不再是单列的而是长*宽
+法三、长*宽  单调栈
+class Solution {
+public:
+//按行算
+    int trap(vector<int>& height) {
+        stack<int> s;
+        int n=height.size();
+        int ans=0;
+        s.push(0);
+        for(int i=1;i<n;++i){//分三种情况
+            if(height[s.top()]>height[i]) s.push(i);
+            else if(height[s.top()]==height[i]){
+                s.pop();
+                s.push(i);
+            }
+            else{
+                while(!s.empty()&&height[s.top()]<height[i]){
+                    int mid = s.top();
+                    s.pop();
+                    if(!s.empty()){
+                        int h=min(height[s.top()],height[i])-height[mid];
+                        int w=i-s.top()-1;
+                        ans+=h*w;
+                    }
+                }
+                s.push(i);
+            }
+        }
+        return ans;
+    }
+};
