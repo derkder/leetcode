@@ -3,7 +3,7 @@
 其中 1 <= i < n ，从第 n 名小伙伴顺时针移动一位会回到第 1 名小伙伴的位置。
 
 
-第一种最好的解法
+第一种最好的解法【除了这个难理解，下面两种都又好理解又好】
 https://leetcode-cn.com/circle/article/BOoxAL/
 f(n,k)=(k+f(n−1,k)−1)modn+1//!!!具体推导就是找f(n,k)和f(n−1,k)的关系，具体具体看链接
 class Solution {
