@@ -5,7 +5,7 @@
 
 第一种最好的解法【除了这个难理解，下面两种都又好理解又好】
 https://leetcode-cn.com/circle/article/BOoxAL/
-f(n,k)=(k+f(n−1,k)−1)modn+1//!!!具体推导就是找f(n,k)和f(n−1,k)的关系，具体具体看链接
+f(n,k)=(k+f(n−1,k)−1)modn+1//!!!具体推导就是找f(n,k)和f(n−1,k)的关系，具体具体看链接&链接评论1
 class Solution {
 public:
     int findTheWinner(int n, int k) {
