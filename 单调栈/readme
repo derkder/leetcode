@@ -5,33 +5,3 @@ e.g.739. 每日温度https://programmercarl.com/0739.%E6%AF%8F%E6%97%A5%E6%B8%A9
 
 
 O(n)就可以了，不需要左一遍右一遍，那个是dp
-class Solution {
-public:
-//按行算
-    int trap(vector<int>& height) {
-        stack<int> s;
-        int n=height.size();
-        int ans=0;
-        s.push(0);
-        for(int i=1;i<n;++i){//分大于等于小于三种情况
-            if(height[s.top()]>height[i]) s.push(i);
-            else if(height[s.top()]==height[i]){
-                s.pop();
-                s.push(i);
-            }
-            else{
-                while(!s.empty()&&height[s.top()]<height[i]){
-                    int mid = s.top();
-                    s.pop();
-                    if(!s.empty()){
-                        int h=min(height[s.top()],height[i])-height[mid];
-                        int w=i-s.top()-1;
-                        ans+=h*w;
-                    }
-                }
-                s.push(i);
-            }
-        }
-        return ans;
-    }
-};
