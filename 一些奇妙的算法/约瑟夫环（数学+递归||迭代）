@@ -57,7 +57,7 @@ class Solution {
 
 
 
-还有一种解法是用队列模拟环形链表【也是很好的方法了】
+还有一种解法是用队列模拟环形链表【也是很好的方法了,但是应该挺慢的】
 class Solution {
 public:
     int findTheWinner(int n, int k) {
