@@ -3,9 +3,9 @@
 其中 1 <= i < n ，从第 n 名小伙伴顺时针移动一位会回到第 1 名小伙伴的位置。
 
 
-第一种最好的解法【除了这个难理解，下面两种都又好理解又好】
+第一种最好的解法【除了这个难理解，下面两种都又好理解又好】[貌似不难理解的]
 https://leetcode-cn.com/circle/article/BOoxAL/
-f(n,k)=(k+f(n−1,k)−1)modn+1//!!!具体推导就是找f(n,k)和f(n−1,k)的关系，具体具体看链接&链接评论1
+f(n,k)=(k+f(n−1,k)−1)modn+1//只要把f(n,k)看成下标，这个公式肉眼就可以看出来!!!具体推导就是找f(n,k)和f(n−1,k)的关系，具体具体看链接&链接评论1
 class Solution {
 public:
     int findTheWinner(int n, int k) {
