@@ -1,6 +1,5 @@
 感觉好多巧妙的解都用的反转链表，三个指针，其中next在每次cur！=null的循环中赋值
-//还有反转链表的递归算法也很重要，qq考了好像（沉默一小下自闭一辈子）
-class Solution {//!!!很容易乱掉没那么间接，pre和cur各往前移一个在运算过程中，整个链表是断掉的
+//还有反转链表的递归算!!!很容易乱掉没那么间接，其实就是！！！！把所有朝右的箭头朝左！！！！！！
 //https://leetcode.cn/problems/reverse-linked-list/solution/fan-zhuan-lian-biao-shuang-zhi-zhen-di-gui-yao-mo-/
 public:
     ListNode* reverseList(ListNode* head) {
