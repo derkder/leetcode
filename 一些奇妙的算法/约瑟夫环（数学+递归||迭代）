@@ -18,13 +18,12 @@ public:
 };
 上面的迭代不太方便理解，下面的递归特别好理解（原问题答案等价于 findTheWinner(n - 1, k) + k
 class Solution {
-    public int findTheWinner(int n, int k) {
-        if (n <= 1) return n;
-        int ans = (findTheWinner(n - 1, k) + k) % n;
-        return ans == 0 ? n : ans;
+public:
+    int lastRemaining(int n, int m) {
+        if(1==n) return 0;
+        return (lastRemaining(n-1,m)+m)%n;
     }
-}
-
+};
 
 
 
