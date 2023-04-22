@@ -6,6 +6,10 @@
 第一种最好的解法【除了这个难理解，下面两种都又好理解又好】[貌似不难理解的]
 https://leetcode-cn.com/circle/article/BOoxAL/
 f(n,k)=(k+f(n−1,k)−1)modn+1//只要把f(n,k)看成下标，这个公式肉眼就可以看出来!!!具体推导就是找f(n,k)和f(n−1,k)的关系，具体具体看链接&链接评论1
+//这个公式的终极理解：！！！！！
+在第一次删除一个数后，环中还有n-1个数，接下来将以m+1这个数作为新的1开始进行新的一轮删除，并得到一个结果f(n-1,m)。但是由于这个结果是由新的1到n-1的编号得到的，
+所以不能直接作为n，m的结果，必须要将得到编号还原为n，m中的编号才行。而还原编号的方法则正好是编号方法的逆向过程。在上面编码的过程是将m+1变为1，也就是减m，
+因此反过来就是加m。最后由于求余得到范围内的编号。
 class Solution {
 public:
     int findTheWinner(int n, int k) {
@@ -16,7 +20,7 @@ public:
         return winner;
     }
 };
-上面的迭代不太方便理解，下面的递归特别好理解（原问题答案等价于 findTheWinner(n - 1, k) + k
+上面的迭代不太方便理解，下面的递归特别好理解（原问题答案等价于 findTheWinner(n - 1, k) + k)
 class Solution {
 public:
     int lastRemaining(int n, int m) {
