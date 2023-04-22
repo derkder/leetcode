@@ -1,2 +1,38 @@
 接雨水是找凹
 这道题事是找凸
+
+
+class Solution {
+public:
+    //因为本题是要找每个柱子左右两边第一个小于该柱子的柱子，所以从栈头（元素从栈头弹出）到栈底的顺序应该是从大到小的顺序
+    int largestRectangleArea(vector<int>& heights) {
+        int result=0;
+        stack<int> s;
+        heights.insert(heights.begin(),0);//数组头部加入元素0
+        heights.push_back(0);//数组尾部加入元素0
+        s.push(0);
+
+        for(int i=0;i<heights.size();++i){
+            if(heights[i]>heights[s.top()]) s.push(i);
+            else if(heights[i]==heights[s.top()]){
+                s.pop();
+                s.push(i);
+            }
+            else{
+                while(!s.empty()&&heights[i]<heights[s.top()]){
+                    int mid = s.top();
+                    s.pop();
+                    if(!s.empty()){
+                        int left = s.top();
+                        int right = i;
+                        int w = right - left - 1;
+                        int h=heights[mid];
+                        result = max(result,w*h);
+                    }
+                }
+                s.push(i);
+            }
+        }
+        return result;
+    }
+};
