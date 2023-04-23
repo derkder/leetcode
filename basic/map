@@ -1,15 +1,53 @@
 底层是红黑树
-不能用sort
-!!!!!!!!
-// 第三种 用"array"方式插入
-mapStudent[123] = "student_first";
-mapStudent[456] = "student_second";
+
 遍历输出：
 for (auto it = mp.begin(); it != mp.end(); ++it) {
             ans.emplace_back(it->second);
         }
 
 （
+
+
+
+根据value排序的方法//转换到vector里用sort
+bool cmp(pair<int, int>& a, pair<int, int>& b) {
+    return a.second < b.second;
+}
+int main() {
+    map<int, int> myMap;
+    ...
+     // 将map中的键值对交换
+    vector<pair<int, int> > vec(myMap.begin(), myMap.end());
+    // 根据value进行排序
+    sort(vec.begin(), vec.end(), cmp);
+    // 打印排序结果
+    for (auto& it : vec) {
+        cout << "key: " << it.first << " value: " << it.second << endl;
+    }
+}    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 第三种 用"array"方式插入
+mapStudent[123] = "student_first";
+mapStudent[456] = "student_second";
 set的遍历*it
 for(auto it=ret.begin();it!=ret.end();it++) res.emplace_back(*it);
 ）
