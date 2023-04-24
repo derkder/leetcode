@@ -29,7 +29,15 @@ int main() {
 }    
 
 
-
+虽然排序不行，找最大的是可以的：
+// 最多的执行次数
+int maxExec = max_element(freq.begin(), freq.end(), [](const auto& u, const auto& v) {
+    return u.second < v.second;
+})->second;
+// 具有最多执行次数的任务数量
+int maxCount = accumulate(freq.begin(), freq.end(), 0, [=](int acc, const auto& u) {
+    return acc + (u.second == maxExec);
+});
 
 
 
