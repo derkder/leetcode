@@ -9,7 +9,7 @@ for (auto it = mp.begin(); it != mp.end(); ++it) {
 
 
 
-根据value排序的方法//转换到vector里用sort
+根据value排序的方法//不能直接map排序一定要转换到vector里用sort
 bool cmp(pair<int, int>& a, pair<int, int>& b) {
     return a.second < b.second;
 }
@@ -24,6 +24,8 @@ int main() {
     for (auto& it : vec) {
         cout << "key: " << it.first << " value: " << it.second << endl;
     }
+    //然后再把vector放进map里去
+    //还没找到怎么放
 }    
 
 
