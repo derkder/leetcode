@@ -1,5 +1,5 @@
 一、这种题用图的搜索做
-二、使用一个 哈希表unordered_set 存储所有已经搜索过的 remain_x, remain_y 状态，保证每个状态至多只被搜索一次
+二、使用一个 哈希表unordered_set 存储所有已经搜索过的 remain_x, remain_y 状态，保证每个状态至多只被搜索一次[不就是之前的visited二维数组]
 三、这个在外面整理过的就是bfs记忆化搜索
 
 
