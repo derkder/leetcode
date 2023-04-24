@@ -1,6 +1,6 @@
 一、这种题用图的搜索做
-二、使用一个 哈希表 存储所有已经搜索过的 remain_x, remain_y 状态，保证每个状态至多只被搜索一次
-
+二、使用一个 哈希表unordered_set 存储所有已经搜索过的 remain_x, remain_y 状态，保证每个状态至多只被搜索一次
+三、这个在外面整理过的就是bfs记忆化搜索
 
 
 有两个水壶，容量分别为 jug1Capacity 和 jug2Capacity 升。水的供应是无限的。确定是否有可能使用这两个壶准确得到 targetCapacity 升。
