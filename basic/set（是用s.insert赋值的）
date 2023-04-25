@@ -11,3 +11,8 @@ for(iter = mapStudent.rbegin(); iter != mapStudent.rend(); iter++){
 }
 for(set<int>::iterator i=all.begin();i!=all.end();i++)
         cout<<*i<<endl; //注意指针运算符
+
+
+
+
+unordered_set 居然不支持pair的查找
