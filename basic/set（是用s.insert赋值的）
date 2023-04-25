@@ -15,4 +15,4 @@ for(set<int>::iterator i=all.begin();i!=all.end();i++)
 
 
 
-unordered_set 居然不支持pair的查找
+unordered_set 居然不支持pair的查找， set就可以
