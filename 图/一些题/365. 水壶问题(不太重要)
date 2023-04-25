@@ -1,4 +1,4 @@
-法一、bfs：
+法一、bfs：()
 一、这种题用图的搜索做
 二、使用一个 哈希表unordered_set 存储所有已经搜索过的 remain_x, remain_y 状态，保证每个状态至多只被搜索一次[不就是之前的visited二维数组]
 三、这个在外面整理过的就是bfs记忆化搜索
@@ -20,7 +20,69 @@
   把 Y 壶倒空。
 因此，本题可以使用深度优先搜索来解决。搜索中的每一步以 remain_x, remain_y 作为状态，即表示 X 壶和 Y 壶中的水量。在每一步搜索时，我们会依次尝试所有的操作，递归地搜索下去。
 这可能会导致我们陷入无止境的递归，因此我们还需要使用一个哈希结合（HashSet）存储所有已经搜索过的 remain_x, remain_y 状态，保证每个状态至多只被搜索一次。
+class Solution {
+public:
+    inline pair<int, int> pour(pair<int,int> cur, int type, int jug1Capacity, int jug2Capacity){
+        pair<int,int> ans;
+        switch(type){
+            case 0:
+                ans = make_pair(0, cur.second);
+                break;
+            case 1:
+                ans = make_pair(cur.first, 0);
+                break;
+            case 2:
+                ans = make_pair(jug1Capacity, cur.second);
+                break;
+            case 3:
+                ans = make_pair(cur.first, jug2Capacity);
+                break;
+            case 4:
+                if(cur.second + cur.first < jug2Capacity)
+                    ans = make_pair(0, cur.second + cur.first);
+                else
+                    ans = make_pair(cur.second + cur.first - jug2Capacity, jug2Capacity);
+                break;
+            case 5:
+                if(cur.second + cur.first < jug1Capacity)
+                    ans = make_pair(cur.second + cur.first, 0);
+                else
+                    ans = make_pair(jug1Capacity, cur.second + cur.first - jug1Capacity);
+                break;
+            default:
+                break;
+        }
+        return ans;
+    }
 
+    bool canMeasureWater(int jug1Capacity, int jug2Capacity, int targetCapacity) {
+        //unordered_set 居然不支持pair的查找
+        if(jug1Capacity + jug2Capacity < targetCapacity) return false;
+        if(jug1Capacity + jug2Capacity == targetCapacity) return true;
+        set<pair<int,int>> s;
+        queue<pair<int,int>> q;
+        q.push(make_pair(0,0));
+        while(!q.empty()){
+            int size = q.size();
+            for(int j=0; j<size; ++j){
+                pair<int,int> cur;
+                cur = q.front();
+                q.pop();
+                for(int i=0;i<6;++i){
+                    pair<int,int> next;
+                    next = pour(cur, i, jug1Capacity, jug2Capacity);
+                    if(next.first == targetCapacity || next.second == targetCapacity || next.first + next.second == targetCapacity) return true;
+                    if(s.count(next)==0){
+                        s.insert(next);
+                        q.push(next);
+                    }
+                }
+            }
+
+        }
+        return false;
+    }
+};
 
 
 https://leetcode.cn/problems/water-and-jug-problem/solution/shui-hu-wen-ti-by-leetcode-solution/
