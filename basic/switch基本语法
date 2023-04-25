@@ -1,0 +1,22 @@
+inline pair<int, int> op(int type, const pair<int, int> &state, int x, int y) {
+        switch(type) {
+            case 0 : return make_pair(x, state.second);
+            case 1 : return make_pair(state.first, y);
+            case 2 : return make_pair(0, state.second);
+            case 3 : return make_pair(state.first, 0);
+            case 4 :{
+                int move = min(state.first, y-state.second);
+                return make_pair(state.first - move, state.second + move);
+            }
+            case 5 : {
+                int move = min(x-state.first, state.second);
+                return make_pair(state.first + move, state.second - move);
+            }
+        }
+        return make_pair(0,0);
+    }
+
+作者：Time-Limit
+链接：https://leetcode.cn/problems/water-and-jug-problem/solution/tu-jie-bfs-c-jie-zhu-unordered_set-queue-shi-xian-/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
