@@ -1,5 +1,52 @@
 一个num栈用来记录数字，一个op栈用来记录操作符，遍历表达式，遇到操作符时进行数的相应计算。
-
 首先我们定义一个eval()函数，用于从数字栈num中弹出两个数字a和b，再从操作符栈op中弹出操作符号，进行计算后将结果数字加入到数字栈num中。
 
 
+下面的算法解决完全表达式都够用了：
+class Solution {
+public:
+    stack<int> num;  //存贮数字
+    stack<char> op;  //存贮操作
+
+    void eval() 
+    {
+        int b = num.top(); num.pop();
+        int a = num.top(); num.pop();
+        char c = op.top(); op.pop();
+        int r;
+        if (c == '+') r = a + b;
+        else if (c == '-') r = a - b;
+        else if (c == '*') r = a * b;
+        else r = a / b;
+        num.push(r);
+    }
+
+    int calculate(string s) {
+        s = '0' + s;  // 对开头是负数的处理 
+        unordered_map<char, int> pr; 
+        pr['+'] = pr['-'] = 1, pr['*'] = pr['/'] = 2; //定义运算符的优先级
+        for(int i = 0; i < s.size(); i++)
+        {
+            char c = s[i]; 
+            if(c == ' ') continue;  //跳过空格
+            if(isdigit(c))     //c是数字,读取一个连续的数字
+            {
+                int x= 0;
+                while(i < s.size() && s[i] >= '0' && s[i] <= '9') x = x * 10 + (s[i++] - '0');  num.push(x);
+                i--;
+            }
+            else  //c是操作符 
+            {     //op栈非空并且栈顶操作符优先级大于等于当前操作符c的优先级，进行eval()计算
+                while(op.size() && pr[op.top()] >= pr[c]) eval(); 
+                op.push(c);
+            }
+        }
+        while(op.size()) eval(); 
+        return num.top();
+    }
+};
+
+作者：lin-shen-shi-jian-lu-k
+链接：https://leetcode.cn/problems/basic-calculator-ii/solution/ji-ben-ji-suan-qi-ii-shuang-zhan-chao-xi-s2ha/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
