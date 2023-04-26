@@ -2,7 +2,7 @@
 首先我们定义一个eval()函数，用于从数字栈num中弹出两个数字a和b，再从操作符栈op中弹出操作符号，进行计算后将结果数字加入到数字栈num中。
 
 
-下面的算法解决完全表达式都够用了：
+下面的算法解决完全表达式都够用了：【如果只是题目的要求不用那么复杂的】
 class Solution {
 public:
     stack<int> num;  //存贮数字
@@ -48,5 +48,57 @@ public:
 
 作者：lin-shen-shi-jian-lu-k
 链接：https://leetcode.cn/problems/basic-calculator-ii/solution/ji-ben-ji-suan-qi-ii-shuang-zhan-chao-xi-s2ha/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+题目的要求一个栈就够了
+class Solution {
+public:
+    int calculate(string s) {
+        vector<int> stk;
+        char preSign = '+';
+        int num = 0;
+        int n = s.length();
+        for (int i = 0; i < n; ++i) {
+            if (isdigit(s[i])) {
+                num = num * 10 + int(s[i] - '0');
+            }
+            if (!isdigit(s[i]) && s[i] != ' ' || i == n - 1) {
+                switch (preSign) {
+                    case '+':
+                        stk.push_back(num);
+                        break;
+                    case '-':
+                        stk.push_back(-num);
+                        break;
+                    case '*':
+                        stk.back() *= num;
+                        break;
+                    default:
+                        stk.back() /= num;
+                }
+                preSign = s[i];
+                num = 0;
+            }
+        }
+        return accumulate(stk.begin(), stk.end(), 0);
+    }
+};
+
+作者：LeetCode-Solution
+链接：https://leetcode.cn/problems/basic-calculator-ii/solution/ji-ben-ji-suan-qi-ii-by-leetcode-solutio-cm28/
 来源：力扣（LeetCode）
 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
