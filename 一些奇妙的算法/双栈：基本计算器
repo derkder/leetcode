@@ -64,7 +64,7 @@ public:
 
 
 
-题目的要求一个栈就够了
+题目的要求一个栈就够了【主要是用presign标注上一个符号！！！】
 class Solution {
 public:
     int calculate(string s) {
