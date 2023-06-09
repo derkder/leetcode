@@ -1,0 +1,28 @@
+在一条环路上有 n 个加油站，其中第 i 个加油站有汽油 gas[i] 升。
+你有一辆油箱容量无限的的汽车，从第 i 个加油站开往第 i+1 个加油站需要消耗汽油 cost[i] 升。你从其中的一个加油站出发，开始时油箱为空。
+给定两个整数数组 gas 和 cost ，如果你可以按顺序绕环路行驶一周，则返回出发时加油站的编号，否则返回 -1 。如果存在解，则保证它是唯一 的。
+
+https://leetcode.cn/problems/gas-station
+主要需要那个图
+class Solution {
+public:
+    //整体像脑筋急转弯，沾点贪心的思想
+    //第一种理解：亏空最严重的一个点必须放在最后一步走，等着前面剩余的救助
+    //第二种理解： 1、两个数组之差的总和必须大于等于0，否则不能完成绕行 
+    //              2、 一个站的收益如果小于0，肯定不能作为起点；而连续的多个站也可以!!!!等效地看做一个站!!!!!，如果其累积收益小于0，就跳过，寻找下一个。
+    //这个亏空也是指的累计的结果，并不是单个亏空
+    int canCompleteCircuit(vector<int>& gas, vector<int>& cost) {
+        int n = gas.size();
+        int sum = 0;
+        int min_spare = INT_MAX;
+        int min_idx;
+        for(int i=0; i < n; ++i){
+            sum += gas[i]-cost[i];
+            if(sum <= min_spare){
+                min_spare = sum;
+                min_idx = i;
+            }
+        }
+        return sum < 0? -1 : (min_idx+1) % n;
+    }
+};
