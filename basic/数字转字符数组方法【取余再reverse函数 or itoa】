@@ -1,6 +1,13 @@
+添加到已有数组：
 取余再reverse函数
 while (num > 0) {
     chars[write++] = num % 10 + '0';
     num /= 10;
 }
 reverse(&chars[anchor], &chars[write]);
+
+
+创建新数组：
+int num = 187;
+char charArray[10];
+itoa(num, charArray, 10);
