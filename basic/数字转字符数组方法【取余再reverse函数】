@@ -1,0 +1,6 @@
+取余再reverse函数
+while (num > 0) {
+    chars[write++] = num % 10 + '0';
+    num /= 10;
+}
+reverse(&chars[anchor], &chars[write]);
