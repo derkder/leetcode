@@ -1,4 +1,7 @@
 一个num栈用来记录数字，一个op栈用来记录操作符，遍历表达式，遇到操作符时进行数的相应计算。
+其中，遇到‘[’压栈，遇到']'出栈
+
+
 首先我们定义一个eval()函数，用于从数字栈num中弹出两个数字a和b，再从操作符栈op中弹出操作符号，进行计算后将结果数字加入到数字栈num中。
 
 
@@ -102,3 +105,14 @@ public:
 链接：https://leetcode.cn/problems/basic-calculator-ii/solution/ji-ben-ji-suan-qi-ii-by-leetcode-solutio-cm28/
 来源：力扣（LeetCode）
 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+
+
+
+
+
+
+
+
+
+另一个用双栈可以简单解决的题目:
