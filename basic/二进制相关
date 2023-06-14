@@ -1,0 +1,17 @@
+
+
+
+
+
+
+
+
+int获得转换为二进制后的长度：
+int GetBitLength(int k) {
+    int j = 0;
+    while (k > 0) {
+        k >>= 1;
+        ++j;
+    }
+    return j;
+}
