@@ -14,6 +14,7 @@ bool isPrime_1( int num )
 
 第二种：
 不需要遍历到n-1，遍历到sqrt(n)即可
+//我们知道，一个数若可以进行因数分解，那么分解时得到的两个数一定是一个小于等于sqrt(n)，一个大于等于sqrt(n)
 bool isPrime_2( int num )
 {
      int tmp =sqrt( num);
