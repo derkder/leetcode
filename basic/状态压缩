@@ -1,4 +1,7 @@
 降低时间复杂度，实际上一点也不复杂，比如说，要记录n种状态有没有被访问过，不用set，
 而是用一个整数来表示，从低位到高位，第 i 位为1则表示数字 i 已经被使用
-if (((usedNumbers >> i) & 1) == 0)
-usedNumbers = usedNumbers | (1 << i
+if (((usedNumbers >> i) & 1) == 0){
+  usedNumbers = usedNumbers | (1 << i};
+  。。。
+}
+
