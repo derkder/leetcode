@@ -6,14 +6,14 @@
 ![官解推导过程](/一些奇妙的算法/imgs/Nim游戏官解思路.png)
 
   
-'''
+```
 class Solution {
 public:
     bool canWinNim(int n) {
         return n % 4 != 0;
     }
 };
-'''
+```
 
 
 
