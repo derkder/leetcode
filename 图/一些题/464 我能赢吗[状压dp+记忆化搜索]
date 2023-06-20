@@ -1,1 +1,36 @@
 绝世好题
+class Solution {
+public:
+    unordered_map<int, bool> memo;//记录已经探索过哪些情况
+
+    bool canIWin(int maxChoosableInteger, int desiredTotal) {
+        //判断边界情况
+        if((1 + maxChoosableInteger) * maxChoosableInteger /2 < desiredTotal){
+            return false;
+        }
+        else{
+            return dfs(maxChoosableInteger, 0, desiredTotal, 0);
+        }
+    }
+    bool dfs(int maxChoosableInteger, int usedNumbers, int desiredTotal, int currentTotal)
+    {
+        if(0 == memo.count(usedNumbers)){
+            bool res = false;
+            //稳赢条件，自己能选到使total超过的数或者对方怎么dfs都搜不到可行的方法
+            for(int i = 1; i <= maxChoosableInteger; ++i){
+                if(0 == ((usedNumbers>>i) & 1)){
+                    if(i + currentTotal >= desiredTotal){
+                        res = true;
+                        break;
+                    }
+                    if(!dfs(maxChoosableInteger, usedNumbers|(1<<i), desiredTotal, currentTotal + i )){
+                        res = true;
+                        break;
+                    }
+                }
+            }
+            memo[usedNumbers] = res;
+        }
+        return memo[usedNumbers];
+    }
+};
