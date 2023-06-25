@@ -7,4 +7,4 @@ BFS在每一轮初始可以用!!!!!!!!queue.size!!!!!!一下子把上一轮放�
 
 
 
-一般剪枝指的是跳出循环break，而不是跳出递归，return false这种
+!!!!!一般剪枝指的是跳出循环break，而不是跳出递归，return false这种,一用return false跳出递归答案就错
