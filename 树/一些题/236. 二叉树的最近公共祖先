@@ -1,4 +1,4 @@
-https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/solution/er-cha-shu-de-zui-jin-gong-gong-zu-xian-by-leetc-2/
+https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-search-tree/
 class Solution {
 public:
     TreeNode* ans;
