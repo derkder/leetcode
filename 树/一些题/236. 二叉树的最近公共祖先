@@ -2,7 +2,7 @@ https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/solutio
 class Solution {
 public:
     TreeNode* ans;
-    bool dfs(TreeNode* root, TreeNode* p, TreeNode* q) {//整体是一个后序遍历
+    bool dfs(TreeNode* root, TreeNode* p, TreeNode* q) {//整体是一个后序遍历，来保证最深
         if (root == nullptr) return false;
         bool lson = dfs(root->left, p, q);//左子树是否有pq
         bool rson = dfs(root->right, p, q);//右子树是否有pq
