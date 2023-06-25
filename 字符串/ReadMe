@@ -19,3 +19,16 @@ string可以用“+”拼接欸
 
 判断字符是否是数字的直接api：
 isdigit
+
+
+
+
+
+
+
+
+一定需要刻在脑子里的东西：
+int a; string temp;
+a = stoi(temp);
+temp = to_string(a);
+string temp = substr(int pos = 0, int n = npos);//返回由pos开始的n个字符组成的字符串
