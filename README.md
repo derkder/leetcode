@@ -25,7 +25,7 @@ priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(&cmp)> q(cmp);//
 ```
 ### bfs：  
 需要记录搜索层数： q.size()
-#### string api  
+### string api  
 ```
 int a; string temp;
 a = stoi(temp);
