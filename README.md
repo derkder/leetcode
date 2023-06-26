@@ -21,7 +21,7 @@
 ## 容易忘的且非常常用：
 ### 优先队列：  
 ```
-priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(&cmp)> q(cmp);
+priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(&cmp)> q(cmp);//(declearType)
 ```
 ### bfs：  
 需要记录搜索层数： q.size()
