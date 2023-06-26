@@ -56,6 +56,7 @@ public:
 这样就可以通过优先级队列比较 [0, 1] 和 [1, 0] 的结果，再弹出较小者；  
 依次进行，进行 k 轮。  
 [https://leetcode.cn/problems/find-k-pairs-with-smallest-sums/solution/tong-ge-lai-shua-ti-la-you-xian-ji-dui-l-fw7y/]
+![优先队列优化图示](/basic/imgs/377优先队列解法.png)
 ```
 class Solution {
 public:
