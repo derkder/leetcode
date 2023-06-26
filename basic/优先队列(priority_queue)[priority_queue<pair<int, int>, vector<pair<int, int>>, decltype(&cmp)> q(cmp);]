@@ -5,12 +5,16 @@ priority_queue <int,vector<int>,greater<int> > q;
 priority_queue <int,vector<int>,less<int> >q;
 
 改变排序使用的函数：
-/*static*/ bool cmp(pair<int, int>& m, pair<int, int>& n) {
+static bool cmp(pair<int, int>& m, pair<int, int>& n) {//不加static报错
         return m.second > n.second;
     }
 priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(&cmp)> q(cmp);
 
-
+q.top()    //访问队首元素不是.front
+q.empty() //判断队列是否为空
+q.push()   //插入元素到队尾
+q.pop()    //出队队首元素
+q.size()   //返回队列中元素的个数
 
 
 
