@@ -32,7 +32,9 @@ a = stoi(temp);
 temp = to_string(a);
 string temp = substr(int pos = 0, int n = npos);//返回由pos开始的n个字符组成的字符串
 ```
-### 剪枝一般是退出循环，并不是return false
+### 剪枝：  
+一般是退出循环，并不是return false
+
 ---
 ## 容易忘的且没有非常常用：
 #### 双向bfs：
