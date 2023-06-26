@@ -24,9 +24,9 @@ priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(&cmp)> q(cmp);
 #### bfs：  
 需要记录搜索层数： q.size()
 #### string api  
-'''
+```
 int a; string temp;
 a = stoi(temp);
 temp = to_string(a);
 string temp = substr(int pos = 0, int n = npos);//返回由pos开始的n个字符组成的字符串
-'''
+```
