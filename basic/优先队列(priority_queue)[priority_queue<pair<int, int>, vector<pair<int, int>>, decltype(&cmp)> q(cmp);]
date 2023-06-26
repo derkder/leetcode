@@ -46,4 +46,5 @@ public:
 
 
 详述 priority_queue
+priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(&cmp)> q(cmp);//declear type?
 
