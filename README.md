@@ -19,11 +19,11 @@
 ---
 
 ## 容易忘的且非常常用：
-#### 优先队列：  
+### 优先队列：  
 ```
 priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(&cmp)> q(cmp);
 ```
-#### bfs：  
+### bfs：  
 需要记录搜索层数： q.size()
 #### string api  
 ```
@@ -32,10 +32,11 @@ a = stoi(temp);
 temp = to_string(a);
 string temp = substr(int pos = 0, int n = npos);//返回由pos开始的n个字符组成的字符串
 ```
-#### 剪枝一般是退出循环，并不是return false
+### 剪枝一般是退出循环，并不是return false
 ---
 ## 容易忘的且没有非常常用：
 #### 双向bfs：
+```
 1、创建「两个队列」分别用于两个方向的搜索；  
 2、创建「两个哈希表」用于「解决相同节点重复搜索」和「！！记录转换次数！！！」；  
 3、为了尽可能让两个搜索方向“平均”，每次从队列中取值进行扩展时，先判断哪个队列容量较少；  
@@ -48,6 +49,7 @@ while(!d1.isEmpty() && !d2.isEmpty()) {
 }
 // update 为将当前队列 d 中包含的元素取出，进行「一次完整扩展」的逻辑（按层拓展）
 void update(Deque d, Map cur, Map other) {}//bfs
+```
 #### 回溯
 ```
 public void backtracking (此时已经走完的路径startIndex，此次可选择的选择列表n,终止条件){//！！！！！也不一定是startindex而是记录used
