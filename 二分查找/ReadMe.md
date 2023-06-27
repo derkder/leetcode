@@ -1,13 +1,16 @@
-大部分此问题的终止条件都是left>right//！！！！
+大部分此问题的终止条件都是left>right//！！！！  
+ 
+while里面是left=mid+1；right=mid-1;（这个不一定的）  
+  
+**通常当题目要求时间复杂度为O(logn)或者自底向上递推显然超时**,!!!空间复杂度为O(1)或者是常数!!!!!，以及需要一个一个遍历的题目就可以用二分优化   
+[https://yuguang.blog.csdn.net/article/details/111935019]  
+  
+常和前缀和结合  
 
-while里面是left=mid+1；right=mid-1;（这个不一定的）
+---
 
-通常当题目要求时间复杂度为O(logn),!!!空间复杂度为O(1)或者是常数!!!!!，以及需要一个一个遍历的题目就可以用二分优化
-https://yuguang.blog.csdn.net/article/details/111935019
-
-常和前缀和结合
-
-模板：
+模板：  
+```
 int binarySearch(int[] nums, int target) {
     int left = 0; 
     int right = nums.length - 1; 
@@ -22,8 +25,10 @@ int binarySearch(int[] nums, int target) {
         }
     return -1;
 }
-
-原来的模板
+```
+  
+原来的模板  
+```
 while (L < R){                       //标准的二分查找框架   符合条件的左端第一个！！！！！！！   
     if (check(mid, time, m) == true)  R = mid;
     else  L = mid + 1;                 //标准的框架
@@ -36,8 +41,7 @@ while (L <= R){
     else  L = mid + 1;                 
 }
 return -1;
-
-
+```
 
 
 
