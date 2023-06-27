@@ -1,7 +1,9 @@
 最大公约数,c++自带的，Greatest Common Divisor
 gcd(a, b)
-最小公倍数，Least Common Multip
+最小公倍数，Least Common Multiple
 lcm(a, b)
+这里如果a b是long类型的， long ab= lcm<long>(a,b);！！！！！
+
 
 
 公式内部：
