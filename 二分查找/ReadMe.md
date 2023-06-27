@@ -12,7 +12,7 @@ while里面是left=mid+1；right=mid-1;（这个不一定的）
 
 模板：  
 ```
-int binarySearch(int[] nums, int target) {
+int binarySearch(int[] nums, int target) {//这个是不能保证左起第一个的！！！尽量不要用！！！！！
     int left = 0; 
     int right = nums.length - 1; 
     while(left <= right) { 
