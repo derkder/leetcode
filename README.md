@@ -78,3 +78,8 @@ public void backtracking (此时已经走完的路径startIndex，此次可选�
    }
 }
 ```
+#### 最大公约数GCD和最小公倍数LCM
+```
+gcd(a, b)//Greatest Common Divisor
+lcm(a, b)//Least Common Multip
+```
