@@ -11,31 +11,17 @@ while里面是left=mid+1；right=mid-1;（这个不一定的）
 ---
 
 模板：  
-```
-int binarySearch(int[] nums, int target) {//这个是不能保证左起第一个的！！！尽量不要用！！！！！
-    int left = 0; 
-    int right = nums.length - 1; 
-    while(left <= right) { 
-        int mid = (right + left) / 2;
-        if(nums[mid] == target)
-            return mid; 
-        else if (nums[mid] < target)
-            left = mid + 1; 
-        else if (nums[mid] > target)
-            right = mid - 1; 
-        }
-    return -1;
-}
-```
   
 原来的模板  
 ```
-while (L < R){                       //标准的二分查找框架   符合条件的左端第一个！！！！！！！   
+//在这个范围内一定有，找符合条件的第一个
+while (L < R){ 
     if (check(mid, time, m) == true)  R = mid;
     else  L = mid + 1;                 //标准的框架
 }
 return L;
 
+////在这个范围内不一定有
 while (L <= R){   
     if(mid==t) return nums[mid];
     if (check(mid, time, m) == true)  R = mid-1;
@@ -44,23 +30,7 @@ while (L <= R){
 return -1;
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```
 
 一般说常数的空间复杂度都是二分，但是也不一定，例如73.矩阵置0
 是利用在原来的空间上标记
