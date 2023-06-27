@@ -42,7 +42,9 @@ string temp = substr(int pos = 0, int n = npos);//返回由pos开始的n个字�
 p1 = make_pair(1, 1.2);
 
 ### 卡时
+```
 if((double)clock()/CLOCKS_PER_SEC>0.97) return;
+```
 
 ---
 ## 容易忘的且没有非常常用：
