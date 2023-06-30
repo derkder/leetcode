@@ -27,7 +27,7 @@ static bool cmp(pair<int, int>& m, pair<int, int>& n) {//不加static报错, 函
 priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(&cmp)> q(cmp);//!!!
 ```
 ```
-auto cmp = [&matrix](const pair<int, int> & a, const pair<int, int> & b) {//函数体内
+auto cmp = [&matrix](pair<int, int> & a, pair<int, int> & b) {//函数体内，也很重要
             return matrix[a.first][a.second] > matrix[b.first][b.second];
         };
 priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(&mp)> q(cmp);//!!!
