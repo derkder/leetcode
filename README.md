@@ -25,6 +25,8 @@ static bool cmp(pair<int, int>& m, pair<int, int>& n) {//不加static报错
         return m.second > n.second;
     }
 priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(&cmp)> q(cmp);//!!!
+
+q.top();//访问不到最后一位，只能访问到顶
 ```
 ### bfs：  
 需要记录搜索层数： q.size()
