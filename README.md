@@ -30,7 +30,7 @@ priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(&cmp)> q(cmp);//
 auto cmp = [&matrix](pair<int, int> & a, pair<int, int> & b) {//函数体内，也很重要
             return matrix[a.first][a.second] > matrix[b.first][b.second];
         };
-priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(&mp)> q(cmp);//!!!
+priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(&cmp)> q(cmp);//!!!
 ```
 ```
 q.top();//访问不到最后一位，只能访问到顶
