@@ -18,7 +18,7 @@
 
 ---
 
-## 容易忘的且非常常用：
+## 容易忘的且非常常用：O(logn)
 ### 优先队列：  
 ```
 auto cmp = [&matrix](pair<int, int> & a, pair<int, int> & b) {//三个地址符号（除非不用传入参数）
