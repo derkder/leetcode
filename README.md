@@ -21,7 +21,7 @@
 ## 容易忘的且非常常用：
 ### 优先队列：  
 ```
-auto cmp = [&matrix](pair<int, int> & a, pair<int, int> & b) {//函数体内，也很重要
+auto cmp = [&matrix](pair<int, int> & a, pair<int, int> & b) {//三个地址符号（除非不用传入参数）
             return matrix[a.first][a.second] > matrix[b.first][b.second];
         };
 priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(cmp)> q(cmp);//!!!没有地址符号
