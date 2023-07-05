@@ -106,4 +106,4 @@ lcm(a, b)//Least Common Multip
 ** long ab = lcm<long>(a,b); **
 ```
 #### 输入输出专场
-{while(cin>>a && cin>>b)}
+`while(cin>>a && cin>>b)`
