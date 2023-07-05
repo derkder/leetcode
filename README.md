@@ -41,6 +41,24 @@ string temp = substr(int pos = 0, int n = npos);//返回由pos开始的n个字�
 ### 剪枝：  
 一般是退出循环，并不是return false
 
+### 二分法
+```
+//在这个范围内一定有，找符合条件的第一个
+while (L < R){ 
+    if (check(mid, time, m) == true)  R = mid;
+    else  L = mid + 1;                 //标准的框架
+}
+return L;
+
+////在这个范围内不一定有
+while (L <= R){   
+    if(mid==t) return nums[mid];
+    if (check(mid, time, m) == true)  R = mid-1;
+    else  L = mid + 1;                 
+}
+return -1;
+```
+
 ### pair：  
 p1 = make_pair(1, 1.2);
 
