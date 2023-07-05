@@ -109,17 +109,19 @@ lcm(a, b)//Least Common Multip
 
 ### 背包问题（dp[j]：容量为j的背包所背的最大价值||能否凑出重量j）
 #### 01背包
+```
 // 初始化
 vector<int> dp(bagWeight + 1, 0);
-01背包：
+##### 01背包：
 第二层循环从大到小！！
 for(int i = 0; i < weight.size(); i++) { // 遍历物品
     for(int j = bagWeight; j >= weight[i]; j--) { // 遍历背包容量
         dp[j] = max(dp[j], dp[j - weight[i]] + value[i]);
     }
 }
-
-完全背包：
+```
+##### 完全背包：
+```
 // 初始化
 vector<int> dp(bagWeight + 1, 0);
 //第二层循环从小到大
@@ -129,6 +131,7 @@ for(int i = 0; i < weight.size(); i++) { // 遍历物品
 
     }
 }
+```
 
 ### 输入输出专场
 `while(cin>>a && cin>>b)`
