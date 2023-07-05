@@ -69,7 +69,7 @@ if((double)clock()/CLOCKS_PER_SEC>0.97) return;
 
 ---
 ## 容易忘的且没有非常常用：
-#### 双向bfs：
+### 双向bfs：
 ```
 1、创建「两个队列」分别用于两个方向的搜索；  
 2、创建「两个哈希表」用于「解决相同节点重复搜索」和「！！记录转换次数！！！」；  
@@ -84,7 +84,7 @@ while(!d1.isEmpty() && !d2.isEmpty()) {
 // update 为将当前队列 d 中包含的元素取出，进行「一次完整扩展」的逻辑（按层拓展）
 void update(Deque d, Map cur, Map other) {}//bfs
 ```
-#### 回溯
+### 回溯
 ```
 public void backtracking (此时已经走完的路径startIndex，此次可选择的选择列表n,终止条件){//！！！！！也不一定是startindex而是记录used
     if(判断出口的条件){
@@ -99,11 +99,36 @@ public void backtracking (此时已经走完的路径startIndex，此次可选�
    }
 }
 ```
-#### 最大公约数GCD和最小公倍数LCM
+### 最大公约数GCD和最小公倍数LCM
 ```
 gcd(a, b)//Greatest Common Divisor
 lcm(a, b)//Least Common Multip
 ** long ab = lcm<long>(a,b); **
 ```
-#### 输入输出专场
+
+
+### 背包问题（dp[j]：容量为j的背包所背的最大价值||能否凑出重量j）
+#### 01背包
+// 初始化
+vector<int> dp(bagWeight + 1, 0);
+01背包：
+第二层循环从大到小！！
+for(int i = 0; i < weight.size(); i++) { // 遍历物品
+    for(int j = bagWeight; j >= weight[i]; j--) { // 遍历背包容量
+        dp[j] = max(dp[j], dp[j - weight[i]] + value[i]);
+    }
+}
+
+完全背包：
+// 初始化
+vector<int> dp(bagWeight + 1, 0);
+//第二层循环从小到大
+for(int i = 0; i < weight.size(); i++) { // 遍历物品
+    for(int j = weight[i]; j <= bagWeight ; j++) { // 遍历背包容量
+        dp[j] = max(dp[j], dp[j - weight[i]] + value[i]);
+
+    }
+}
+
+### 输入输出专场
 `while(cin>>a && cin>>b)`
