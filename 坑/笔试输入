@@ -1,3 +1,7 @@
+https://ac.nowcoder.com/acm/contest/5657/I
+
+
+
 cin>> temp；
   cin>>将输入的数据存放到temp里面，并且进行好了类型转换，也就是说如果temp是int，那么输入的数据就会转化成int，如果是strin类型，
 那么就将输入的数据转换成string类型然后存入到temp里面，cin>>输入的数据不包含空格和回车，空格和回车会存入到cin的缓冲区中，如果
