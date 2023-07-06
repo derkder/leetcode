@@ -152,3 +152,17 @@ int main(){
     return 0;
 }
 ```
+#### cin.get()读入（空格？）和换行符号
+```
+int main(){
+    string cur;
+    vector<string> strs;
+    while(cin>>cur){
+        strs.emplace_back(cur);
+        if (cin.get() == '\n'){
+            sort(strs.begin(),strs.end());
+            printv(strs);
+            strs.clear();
+        }
+    }
+```
