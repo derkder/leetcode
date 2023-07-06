@@ -134,4 +134,18 @@ for(int i = 0; i < weight.size(); i++) { // 遍历物品
 ```
 
 ### 输入输出专场
-`while(cin>>a && cin>>b)`
+`while(cin>>a && cin>>b)//遇到空格回车就停（也就是说读不到空格回车），读不到就返回null`
+```
+int main(){
+    string input;
+    while (getline(cin, input)) {  //读取一行
+        vector<string> strs;
+        string str;
+        stringstream ss(input);
+        while(getline(ss, str,',')){//每个字符中间用','间隔
+            strs.push_back(str);
+        }
+    }
+    return 0;
+}
+```
