@@ -1,3 +1,5 @@
+https://zhuanlan.zhihu.com/p/93647900
+
 主要构成：
 并查集主要由一个整型数组parent[ ]和两个函数find( )、union( )构成。
 数组 parent[ ] 记录了每个点的前驱节点是谁，函数 find(x) 用于查找指定节点 x 属于哪个集合，函数 union(x,y) 用于合并两个节点 x 和 y 。
