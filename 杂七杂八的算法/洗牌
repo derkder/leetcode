@@ -3,7 +3,7 @@ https://zhuanlan.zhihu.com/p/120954212
 简单来说就是“取出法”，将序列中的元素随机取出，原序列中的该元素被剔除，被取出的元素按顺序排列。依次生成新的序列
 void Fisher_Yates_Shuffle()
 {
-      vector<int>numy_of_Fisher;
+      vector<int> numy_of_Fisher;
       int counter=num;
       for(int i=0;i<num;i++)  //随机生成位点，将该位点的元素拿出，重新生成以数组长度为范围的随机数，一直循环下去。
       {
