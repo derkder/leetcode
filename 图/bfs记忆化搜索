@@ -18,7 +18,7 @@ public:
     vector<vector<int>> bicycleYard(vector<int>& position, vector<vector<int>>& terrain, vector<vector<int>>& obstacle){
         int n=terrain.size();
         int m=terrain.back().size();
-        vector<vector<set<int>>> speed(n,vector<set<int>>(m));//m后面跟set<int就会报错
+        vector<vector<set<int>>> speed(n,vector<set<int>>(m));//m后面跟set<int就会报错，在坐标x、y上可能的所有速度
         //关键就是这个改成set了，可以记忆了
         //所以写set只是为了不重复搜，真正记忆上一条路径靠的是下面的queue记录的状态包括坐标的和速度
         //bfs时状态还要记录速度也就是队列queue中的元素要记录速度
