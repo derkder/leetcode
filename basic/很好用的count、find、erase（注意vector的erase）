@@ -1,2 +1,6 @@
 int cnt = count(nums.begin(), nums.begin()+4, nums[0]);//记录与首元素相同的数字的个数
 nums.erase(find(nums.begin(), nums.end(), val + 1));//去掉一个首元素+1（顺子的第二个）
+
+
+其中vector的erase：
+被删除元素后的所有元素都会向前移的
