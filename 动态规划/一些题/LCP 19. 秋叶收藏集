@@ -11,7 +11,7 @@ public:
         vector<vector<int>> dp(n,vector<int>(3,0));
         dp[0][0]=(leaves[0]=='y');
         dp[0][1]=dp[0][2]=dp[1][2]=INT_MAX;//!!把不可能的情况置为INT_MAX(本来完全没想到)
-        //dp[i][j]表示到第i个叶子，第i个叶子当前！！（变成）处于！！j状态
+        //dp[i][j]表示到第i个叶子，第i个叶子当前！！（变成）处于！！j状态(状态 0 和状态 2分别表示前面和后面的红色部分，状态 1 表示黄色部分。)
         for(int i=1;i<n;i++){
             int isRed=(leaves[i]=='r');
             int isYellow=(leaves[i]=='y');
