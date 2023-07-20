@@ -67,3 +67,49 @@ public:
     }
 };
 链接：https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-cooldown/solution/zui-jia-mai-mai-gu-piao-shi-ji-han-leng-dong-qi-4/
+
+
+
+123. 买卖股票的最佳时机 III（可以进行两笔不交叉的交易）
+按照上面的思想，居然被我自己想出来了，而且还是官解（就是官解优化了下空间）：
+五个状态：
+未进行过任何操作；由于第一个状态的利润显然为 0，因此我们可以不用将其记录
+只进行过一次买操作；
+进行了一次买操作和一次卖操作，即完成了一笔交易；
+在完成了一笔交易的前提下，进行了第二次买操作；
+完成了全部两笔交易
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int n = prices.size();
+        int buy1 = -prices[0], sell1 = 0;
+        int buy2 = -prices[0], sell2 = 0;
+        for (int i = 1; i < n; ++i) {
+            buy1 = max(buy1, -prices[i]);
+            sell1 = max(sell1, buy1 + prices[i]);
+            buy2 = max(buy2, sell1 - prices[i]);
+            sell2 = max(sell2, buy2 + prices[i]);
+        }
+        return sell2;
+    }
+};
+我原来的解：（更清晰的思路但是更更低的效率）
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        //0:一笔交易也没做；1买入过一个，2卖过一个...
+        int n = prices.size();
+        vector<vector<long long>> dp(n, vector<long long>(5, INT_MIN));
+        dp[0][0] = 0;
+        dp[0][1] = -prices[0];
+        for(int i = 1; i < n; ++i){
+            dp[i][0] = dp[i - 1][0];
+            dp[i][1] = max(dp[i - 1][0] - prices[i], dp[i - 1][1]);
+            if(dp[i][1] != INT_MIN) dp[i][2] = max(dp[i - 1][1] + prices[i], dp[i - 1][2]);
+            if(dp[i][2] != INT_MIN) dp[i][3] = max(dp[i - 1][2] - prices[i], dp[i - 1][3]);
+            if(dp[i][3] != INT_MIN) dp[i][4] = max(dp[i - 1][3] + prices[i], dp[i - 1][4]);
+            //cout<<dp[i][0]<<"  "<<dp[i][1]<<"  "<<dp[i][2]<<"  "<<dp[i][3]<<"  "<<dp[i][4]<<endl;
+        }
+        return dp[n-1][max_element(dp[n-1].begin(),dp[n-1].end()) - dp[n-1].begin()];
+    }
+};
