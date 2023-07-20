@@ -1,0 +1,71 @@
+714.买卖股票的最佳时机含手续费
+给定一个整数数组 prices，其中 prices[i]表示第 i 天的股票价格 ；整数 fee 代表了交易股票的手续费用。
+你可以无限次地完成交易，但是你每笔交易都需要付手续费。如果你已经购买了一个股票，在卖出它之前你就不能再继续购买股票了。
+返回获得利润的最大值
+
+
+class Solution {
+public:
+    int maxProfit(vector<int>& prices, int fee) {
+        //dp[i][j] j为0或1 0代表手里没有股票，1代表有
+        //一开始没想到
+        //这就相当于两个dp数组其实，一个记录当前手里有股票的最大，一个记录当前手里没股票的最大
+        int n = prices.size();
+        vector<vector<int>> dp(n, vector<int>(2, INT_MIN));
+        dp[0][0] = 0;
+        dp[0][1] = -prices[0];
+        for(int i = 1; i < n; ++i){
+            dp[i][0] = max(dp[i-1][0], dp[i-1][1] + prices[i] - fee);
+            dp[i][1] = max(dp[i-1][1], dp[i-1][0] - prices[i]);
+        }
+        return max(dp[n - 1][0], dp[n - 1][1]);
+    }
+};
+
+
+
+
+
+
+309. 最佳买卖股票时机含冷冻期
+https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-cooldown/
+//动态规划是想到了，但状态想得不对又不自信走歪到单调栈了,另外注意返回
+// dp[i][0]: 手上持有股票的最大收益
+// dp[i][1]: 手上不持有股票，并且处于冷冻期中的累计最大收益
+// dp[i][2]: 手上不持有股票，并且不在冷冻期中的累计最大收益
+//本来想的是012对应买入卖出冷静期，感觉还是要更往状态的方向想，像whether持有whether处于冷静期这种
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int n=prices.size();
+        vector<vector<int>> dp(n,vector<int>(3,0));
+        dp[0][0]=-prices[0];
+        for(int i=1;i<n;++i){
+            dp[i][0]=max(dp[i-1][2]-prices[i],dp[i-1][0]);
+            dp[i][1]=dp[i-1][0]+prices[i];
+            dp[i][2]=max(dp[i-1][2],dp[i-1][1]);
+        }
+        return max(dp[n-1][1],dp[n-1][2]);
+    }
+};
+这个还有空间上更简化的：
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int n = prices.size();
+        int f0 = -prices[0];
+        int f1 = 0;
+        int f2 = 0;
+        for (int i = 1; i < n; ++i) {
+            int newf0 = max(f0, f2 - prices[i]);
+            int newf1 = f0 + prices[i];
+            int newf2 = max(f1, f2);
+            f0 = newf0;
+            f1 = newf1;
+            f2 = newf2;
+        }
+
+        return max(f1, f2);
+    }
+};
+链接：https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-cooldown/solution/zui-jia-mai-mai-gu-piao-shi-ji-han-leng-dong-qi-4/
