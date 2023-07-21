@@ -1,0 +1,34 @@
+非典型，但是好难
+https://leetcode.cn/problems/solving-questions-with-brainpower/comments/
+class Solution {
+public:
+    long long mostPoints(vector<vector<int>>& questions) {
+        //dp[i] 表示做到第 i 题的时候最高的得分
+        int n = questions.size();
+        vector<long long> dp(n, 0);
+        for(int i = 0; i < n; ++i){
+            //跳过,则下一道题得分与这题相同
+            int next = i +1;
+            if(next < n){
+                dp[next] = max(dp[next], dp[i]);
+            }
+
+            //没跳过,则下第i + questions[i][1] + 1;道题得分与这题相同
+            next = i + questions[i][1] + 1;
+            dp[i] += questions[i][0];
+            if(next < n){
+                dp[next] = max(dp[next], dp[i]);
+            }
+        }
+        auto ans = *max_element(dp.begin(), dp.end());
+        return ans;
+    }
+};
+//乍一看像二分
+//然后看了眼小杨刷题更像二分了(都是顺序)
+//但我是在dp题库找的
+        
+//本来的思路：dp[i][01]第二个参数代表有没有解决
+//卡在了不能判断dp[i][1]
+//其他人的正向解决:选择做题，加上此题得分，跳过若干题后的下一题继承得分
+//主要是有个继承，这样不存在没有记录路径的问题了
