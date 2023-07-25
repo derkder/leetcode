@@ -31,7 +31,7 @@ for(int i = 0; i < weight.size(); i++) { // 遍历物品
 }
 
 完全背包：
-// 先遍历物品，再遍历背包
+// 先遍历物品，再遍历背包(这样对应组合数，先背包后物品的话就是排列数了)
 //第二层循环从小到大
 for(int i = 0; i < weight.size(); i++) { // 遍历物品
     for(int j = weight[i]; j <= bagWeight ; j++) { // 遍历背包容量,是weight[i]不是weight[0]
