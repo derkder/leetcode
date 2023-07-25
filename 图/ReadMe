@@ -7,4 +7,9 @@ BFS在每一轮初始可以用!!!!!!!!queue.size!!!!!!一下子把上一轮放�
 
 
 
-!!!!!一般剪枝指的是跳出循环break，而不是跳出递归，return false这种,一用return false跳出递归答案就错
+!!!!!一般剪枝指的是跳出循环break continue，而不是跳出递归，return false这种,一用return false跳出递归答案就错
+
+
+拓扑：
+看到有向无环图DAG我们想到什么！
+拓扑！！！！
