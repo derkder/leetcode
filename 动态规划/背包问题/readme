@@ -34,7 +34,7 @@ for(int i = 0; i < weight.size(); i++) { // 遍历物品
 // 先遍历物品，再遍历背包
 //第二层循环从小到大
 for(int i = 0; i < weight.size(); i++) { // 遍历物品
-    for(int j = weight[i]; j <= bagWeight ; j++) { // 遍历背包容量
+    for(int j = weight[i]; j <= bagWeight ; j++) { // 遍历背包容量,是weight[i]不是weight[0]
         dp[j] = max(dp[j], dp[j - weight[i]] + value[i]);
 
     }
