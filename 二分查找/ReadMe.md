@@ -30,7 +30,7 @@ while (L <= R){
 return -1;
 
 ////找一个数组里第一个大于target的数，l和r都要变，而且返回的也是r否则就不对
-while (l <= r) {
+while (l < r) {
    int mid = l + (r - l) / 2;
    if (nums[mid] >= target) {
        r = mid - 1;
