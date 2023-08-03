@@ -29,16 +29,17 @@ while (L <= R){
 }
 return -1;
 
-////找一个数组里第一个大于target的数，l和r都要变，而且返回的也是r否则就不对
-while (l < r) {
-   int mid = l + (r - l) / 2;
-   if (nums[mid] >= target) {
-       r = mid;
-   } else {
-       l = mid + 1;
-   }
-}
-return r - 1;
+////找一个数组里第一个小于target的数，就是说l和r两个元素可以都进行变化的，返回的东西也可以加减1的
+while(l < r){
+     mid = l + ((r - l)>>1);
+     if(matrix[mid][n-1] <= target){
+         l = mid+1;
+     }
+     else{
+         r = mid - 1;
+     }
+ }
+ int y = r + 1;
 ```
 
 ---
