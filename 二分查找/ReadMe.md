@@ -11,7 +11,6 @@ while里面是left=mid+1；right=mid-1;（这个不一定的）
 ---
 
 模板：  
-(建议模板随便看看就好了，还得看这个[https://www.programmercarl.com/0704.%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.html#%E6%80%9D%E8%B7%AF])   
 原来的模板  
 ```
 //在这个范围内一定有，找符合条件的第一个
@@ -29,17 +28,7 @@ while (L <= R){
 }
 return -1;
 
-////找一个数组里第一个小于target的数，就是说l和r两个元素可以都进行变化的，返回的东西也可以加减1的
-while(l < r){
-     mid = l + ((r - l)>>1);
-     if(matrix[mid][n-1] <= target){
-         l = mid+1;
-     }
-     else{
-         r = mid - 1;
-     }
- }
- int y = r + 1;
+////l和r两个元素可以都进行变化的，返回的东西也可以加减1的
 ```
 
 ---
