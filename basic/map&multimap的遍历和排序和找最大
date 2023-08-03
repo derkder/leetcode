@@ -6,6 +6,16 @@ for (auto it = mp.begin(); it != mp.end(); ++it) {
         }
 
 （
+multimap的遍历输出；
+// 查找键为 "apple" 的所有键值对
+auto range = m.equal_range("apple");
+for (auto it = range.first; it != range.second; ++it) {
+    cout << it->first << " " << it->second << endl;
+}
+// 查找键为 "banana" 的键值对数量
+int n = m.count("banana");
+
+
 
 
 
@@ -117,3 +127,9 @@ unordered_set<string>::iterator iter1;
         cout << *iter1 << "\t";
     }
     cout << endl;
+
+
+
+
+
+
