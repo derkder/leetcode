@@ -17,7 +17,7 @@ public:
     }
 
     void Union(vector<int>& parent, int index1, int index2) {
-        parent[Find(parent, index1)] = Find(parent, index2);
+        parent[Find(parent, index1)] = Find(parent, index2);//这里find是左右两边都有的
     }
 
     int findCircleNum(vector<vector<int>>& isConnected) {
@@ -76,3 +76,5 @@ public:
         return vector<int>{};
     }
 };
+
+超难：721 账户合并
