@@ -1,7 +1,7 @@
 绝世好题
 class Solution {
 public:
-    unordered_map<int, bool> memo;//记录已经探索过哪些情况
+    unordered_map<int, bool> memo;//记录已经探索过哪些情况，就这里体现的记忆化搜索，即在暴力递归的时候，确保没有重复计算
 
     bool canIWin(int maxChoosableInteger, int desiredTotal) {
         //判断边界情况
