@@ -159,7 +159,7 @@ int main(){
     vector<string> strs;
     while(cin>>cur){
         strs.emplace_back(cur);
-        if (cin.get() == '\n'){
+        if (cin.get() == '\n'){//注意这里使单引号，因为cin.get只吃字符
             sort(strs.begin(),strs.end());
             printv(strs);
             strs.clear();
