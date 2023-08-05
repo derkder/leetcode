@@ -113,7 +113,7 @@ lcm(a, b)//Least Common Multip
 // 初始化
 vector<int> dp(bagWeight + 1, 0);
 ##### 01背包：
-第二层循环从大到小！！
+第二层循环从大到小！！这种反过来就是为了确保每种物体只放一次
 for(int i = 0; i < weight.size(); i++) { // 遍历物品
     for(int j = bagWeight; j >= weight[i]; j--) { // 遍历背包容量
         dp[j] = max(dp[j], dp[j - weight[i]] + value[i]);
