@@ -1,5 +1,5 @@
-感觉好多巧妙的解都用的反转链表，三个指针，其中next在每次cur！=null的循环中赋值
-//还有反转链表的递归算!!!很容易乱掉没那么间接，其实就是！！！！把所有朝右的箭头朝左！！！！！！
+感觉好多巧妙的解都用的反转链表，三个指针，其中next在每次cur！=null的循环中赋值.其实就是！！！！把所有朝右的箭头朝左！！！！！！
+//还有反转链表的递归算!!!很容易乱掉没那么间接，对于递归问题，千万不要去想计算机是怎么去执行的
 //https://www.jerrymei.cn/algorithm-recursion-kata/
 public:
     ListNode* reverseList(ListNode* head) {
