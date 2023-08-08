@@ -1,8 +1,10 @@
-输入：text1 = "abcde", text2 = "ace" 
-输出：3  
-解释：最长公共子序列是 "ace" ，它的长度为 3 。
-
-
+## 1143最长公共子序列  
+#### 题目
+输入：text1 = "abcde", text2 = "ace"   
+输出：3    
+解释：最长公共子序列是 "ace" ，它的长度为 3 。  
+#### 解：
+```
 class Solution {
 public:
     int longestCommonSubsequence(string text1, string text2) {
@@ -30,4 +32,14 @@ public:
     }
 };
 // @lc code=end
+```
 
+
+
+## 718最长重复子数组
+#### 题目
+输入：A: [1,2,3,2,1],B: [3,2,1,4,7]       
+输出：3    
+解释：长度最长的公共子数组是 [3, 2, 1] 。
+#### 醍醐灌顶的图图：
+![718dp](/动态规划/一些题/imgs/718dp图解.png)
