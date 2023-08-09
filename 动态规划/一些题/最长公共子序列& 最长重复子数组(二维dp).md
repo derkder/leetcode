@@ -44,3 +44,25 @@ public:
 解释：长度最长的公共子数组是 [3, 2, 1] 。
 #### 醍醐灌顶的图图：
 ![718dp](/动态规划/一些题/imgs/718dp图解.png)
+#### 解：
+```
+int findLength(vector<int>& nums1, vector<int>& nums2) {
+        //嗨呀，知道是dp（因为在这个专题找de）
+        //难不成用二分？嗨呀，已经很努力地想了
+        //dp[i][j] ：以i-1结尾的A子数组和以j-1结尾的B子数组的最长!!公共后缀长度!!而不是最长子数组长度
+        //这个公共后缀就很难想
+        int n = nums1.size();
+        int m = nums2.size();
+        int ans = 0;
+        vector<vector<int>> dp(n + 1, vector<int>(m + 1, 0));
+        for(int i = 1; i < n + 1; ++i){
+            for(int j = 1; j < n + 1; ++j){
+                if(nums[i-1] == nums[j - 1]){
+                    dp[i][j] = dp[i -1][j - 1] + 1;
+                }
+                ans = max(ans,  dp[i][j])
+            }
+        }
+        return ans;
+    }
+```
