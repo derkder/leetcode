@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int ans = 0;
+    int tempMax = 0;
+    int goodNodes(TreeNode* root) {
+        //前序遍历记录目前为止最大的？
+        dfs(root, root -> val);
+        return ans;                       
+    }
+    //第二个参数：表示从根到当前节点路径上所经过的所有节点中的最大值(不包括当前节点)
+    void dfs(TreeNode* root, int  _max){
+        if(nullptr != root){
+            if(root -> val >= _max){
+                ans ++;
+                _max = root -> val;
+            }
+            dfs(root -> left, _max);
+            dfs(root -> right, _max);
+        }
+    }
+};
+
+
+前序遍历里有一种到右边，左边的东东就会被清除的思想？
+如果放在参数里递归遍历的话
