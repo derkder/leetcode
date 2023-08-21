@@ -32,3 +32,7 @@ int a; string temp;
 a = stoi(temp);
 temp = to_string(a);
 string temp = substr(int pos = 0, int n = npos);//返回由pos开始的n个字符组成的字符串
+将char类型转化成string类型
+char c = 'A';
+string s;   
+s = c;
