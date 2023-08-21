@@ -5,10 +5,11 @@ public:
         if (root == nullptr) // 遍历到null节点，收益0
             return 0;
         int left = dfs(root->left), right = dfs(root->right); // 左右子树提供的最大路径和
-
-        int inSum = root->val + left + right; // 当前子树内部的最大路径和
+        // 当前节点作为子树的根节点内部的最大路径和
+        int inSum = root->val + left + right; 
         ans = max(ans, inSum); // 挑战最大纪录
-        int outSum = root->val + max(0, max(left, right));  // 当前子树对外提供的最大和
+        // 当前节点作为子树的根节点对外提供的最大和
+        int outSum = root->val + max(0, max(left, right));  
         return max(outSum, 0);
     }
     int maxPathSum(TreeNode* root) {
