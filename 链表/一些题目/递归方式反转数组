@@ -10,7 +10,8 @@ class Solution{
     }
 
 
-
+写了一个叫reverseList(node)的函数，它的作用就是反转链表。
+并且我们假设reverseList(2->3->4)的问题已经解决了，也就是说2->3->4已经反转为4->3->2了
 
 
 
