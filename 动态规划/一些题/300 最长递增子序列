@@ -1,0 +1,10 @@
+//dp的含义是必须以i位置结尾的情况下最长递增子序列的最大长度！！
+ for (int i = 1; i < N; i++) {
+    for (int j = 0; j < i; j++) {
+        if (arr[i] > arr[j]) {
+            dp[i] = max(dp[i], dp[j] + 1); //长度加1
+        }
+    }
+    maxLen = max(maxLen, dp[i]);//更新最大长度
+}
+return maxLen;
