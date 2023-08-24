@@ -6,7 +6,7 @@ public:
         ListNode* prev = nullptr;
         ListNode* curr = head;
         while (curr) {
-            ListNode* next = curr->next;
+            ListNode* next = curr->next;//temp变量!!!!
             curr->next = prev;
             prev = curr;
             curr = next;
