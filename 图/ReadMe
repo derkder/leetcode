@@ -3,8 +3,8 @@ BFS:
 BFS在每一轮初始可以用!!!!!!!!queue.size!!!!!!一下子把上一轮放入队中的全出完//但好像都不这么做的
 要记录bfs遍历层数的时候：!!!!!!!!queue.size!!!!!!
 
-
-
+DFS:
+DFS是不会回退visited数组状态的，这个和回溯是不一样的
 
 
 !!!!!一般剪枝指的是跳出循环break continue，而不是跳出递归，return false这种,一用return false跳出递归答案就错
