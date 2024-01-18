@@ -67,6 +67,13 @@ p1 = make_pair(1, 1.2);
 if((double)clock()/CLOCKS_PER_SEC>0.97) return;
 ```
 
+### 整数溢出 
+```
+ans = min(ans, sum - beans[i] * (n - i));//会溢出，要用下面的static_cast
+ans = min(ans, sum - static_cast<long long>(beans[i]) * static_cast<long long>(n - i));
+```
+
+
 ---
 ## 容易忘的且没有非常常用：
 ### 双向bfs：
