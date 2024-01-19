@@ -3,7 +3,7 @@
 //https://www.jerrymei.cn/algorithm-recursion-kata/
 public:
     ListNode* reverseList(ListNode* head) {
-        ListNode* prev = nullptr;
+        ListNode* prev = nullptr;// make life earsier!!
         ListNode* curr = head;
         while (curr) {
             ListNode* next = curr->next;//temp变量!!!!
