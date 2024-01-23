@@ -3,4 +3,5 @@ int reverse(int x) {
         cout<<s;
         return revert(s);
     }
-    
+
+return stoi(charArray);
