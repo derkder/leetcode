@@ -68,6 +68,10 @@ p1 = make_pair(1, 1.2);
 if((double)clock()/CLOCKS_PER_SEC>0.97) return;
 ```
 
+### string
+```
+s.substr(startIdx, len); //  substr 的第二个参数是长度而不是结束索引。
+```
 
 ---
 ## 容易忘的且没有非常常用：
