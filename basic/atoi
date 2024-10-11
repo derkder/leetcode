@@ -9,3 +9,4 @@ stk.push(atoi(token.c_str()));
 
 
 貌似直接写stoi更好。int x=stoi(s);
+如果要转换成long long而不是int   ：   stoll
