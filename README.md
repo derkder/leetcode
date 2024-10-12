@@ -139,6 +139,9 @@ for(int i = 0; i < weight.size(); i++) { // 遍历物品
 }
 ```
 
+### 有向无环图
+拓扑问题，用indegrees数组解决，遍历把indegrees == 0的成员入队伍
+
 ### 输入输出专场
 #### cin:遇到空格回车就停（也就是说读不到空格回车[cin.get()]），读不到就返回null
 `while(cin>>a && cin>>b)`
