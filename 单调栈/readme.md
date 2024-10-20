@@ -17,7 +17,7 @@ e.g.739. 每日温度https://programmercarl.com/0739.%E6%AF%8F%E6%97%A5%E6%B8%A9
 [https://leetcode.cn/problems/beautiful-towers-i/solutions/2614597/mei-li-ta-i-by-leetcode-solution-uqnf/]  
 
 ## 模板
-'''
+```
 // 递增栈
 stack<int> st;
 vector<int> result(T.size(), 0);
@@ -35,4 +35,4 @@ for (int i = 1; i < T.size(); i++) {
         st.push(i);
     }
 }
-'''
+```
