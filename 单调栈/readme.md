@@ -16,3 +16,23 @@ e.g.739. 每日温度https://programmercarl.com/0739.%E6%AF%8F%E6%97%A5%E6%B8%A9
 ##### 经典例题：  2865美丽塔  
 [https://leetcode.cn/problems/beautiful-towers-i/solutions/2614597/mei-li-ta-i-by-leetcode-solution-uqnf/]  
 
+## 模板
+'''
+// 递增栈
+stack<int> st;
+vector<int> result(T.size(), 0);
+st.push(0);
+for (int i = 1; i < T.size(); i++) {
+    if (T[i] < T[st.top()]) {                       // 情况一
+        st.push(i);
+    } else if (T[i] == T[st.top()]) {               // 情况二
+        st.push(i);
+    } else {
+        while (!st.empty() && T[i] > T[st.top()]) { // 情况三
+            result[st.top()] = i - st.top();
+            st.pop();
+        }
+        st.push(i);
+    }
+}
+'''
