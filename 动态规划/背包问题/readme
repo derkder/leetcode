@@ -12,7 +12,7 @@ https://tangshusen.me/2019/11/24/knapsack-problem/
  二维数组的递归
   for(int i = 1; i < weight.size(); i++) { // 遍历物品
     for(int j = 0; j <= bagweight; j++) { // 遍历背包容量
-        if (j < weight[i]) dp[i][j] = dp[i - 1][j]; //！！！！！！！！！！！！！！！！！！！！！
+        if (j < weight[i]) dp[i][j] = dp[i - 1][j]; //！！！！！！！！！！！！！！！！！！！！！防止下面的赋值发生溢出的情况（dp[i - 1][j - weight[i]]的第二个数字小于0）
         else dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - weight[i]] + value[i]);
 
     }
