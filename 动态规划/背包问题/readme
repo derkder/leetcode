@@ -5,7 +5,7 @@ https://tangshusen.me/2019/11/24/knapsack-problem/
 
 
 止步于01背包和完全背包（笨蛋一个应付下面试笔试得了）
-二维
+二维(都是外循环是物品内循环是重量，且两层循环都是从小到大)
 01背包
 !!二维数组的初始化(其实想想递归公式就知道了)： 
   for (int j = weight[0]; j <= bagweight; j++) dp[0][j] = value[0];
