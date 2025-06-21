@@ -26,9 +26,21 @@ auto cmp = [&matrix](pair<int, int> & a, pair<int, int> & b) {//三个地址符�
         };
 priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(cmp)> q(cmp);//!!!没有地址符号
 ```
+### sort： 
 ```
-q.top();//访问不到最后一位，只能访问到顶
+struct Activity {
+    int start;
+    int end;
+};
+bool compare(Activity a, Activity b) {
+    return a.end < b.end;
+}
+vector<Activity> activities(n);
+sort(activities.begin(), activities.end(), compare);
 ```
+
+
+
 ### bfs：  
 需要记录搜索层数： q.size()
 入队时而不是出队时标记访问过防止超时
